@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
-const UsuariosSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
-});
+// URL de conexão com o MongoDB (substitua <your_mongodb_url> pela URL do seu banco de dados)
+const mongoURI = 'mongodb://localhost:27017/sistema_escolar'; // URL do MongoDB
 
-module.exports = mongoose.model('Aluno', AlunosSchema);
+// Função para conectar ao banco de dados
+const connectDB = async () => {
+  try {
+    await mongoose.connect(mongoURI, {});
+    console.log('MongoDB conectado com sucesso');
+  } catch (err) {
+    console.error('Erro ao conectar ao MongoDB:', err.message);
+    process.exit(1); // Encerra o processo se a conexão falhar
+  }
+};
 
-// Modelo de Aluno
-const AlunosSchema = new mongoose.Schema({
-  enrollmentNumber: { type: String, required: true, unique: true },
-  dateOfBirth: { type: Date, required: true },
-});
-AlunosSchema.add(UsuariosSchema);
-
-// Adicionar modelo para professores, coordenadores, podendo ter outros 
+// Exporta a função de conexão para ser usada em outros arquivos
+module.exports = connectDB;
