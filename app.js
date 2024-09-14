@@ -1,21 +1,18 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const alunosRoutes = require('./backend/routes/alunosRoutes');
+const usuariosRoutes = require('./backend/routes/usuariosRoutes');
+const connectDB = require('./backend/config/database')
 
 const app = express();
 const port = process.env.PORT || 3000;
+connectDB();
 
-// Conectar ao banco de dados MongoDB
-mongoose.connect(process.env.MONGO_URI,)
-  .then(() => console.log('Conectado ao MongoDB'))
-  .catch(err => console.error('Erro ao conectar ao MongoDB', err));
 // Middleware
 app.use(bodyParser.json());
 
 // Rotas
-app.use('/', alunosRoutes);
+app.use('/', usuariosRoutes);
 
 // Iniciar o servidor
 app.listen(port, () => {
