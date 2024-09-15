@@ -1,7 +1,8 @@
 //Variáveis de ambiente
 require('dotenv').config();
-// Requisitando Express
+// Requisitando Express e CORS
 const express = require('express');
+const cors = require('cors'); 
 // Requisitando documentação da API
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
