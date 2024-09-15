@@ -1,18 +1,29 @@
+//Variáveis de ambiente
 require('dotenv').config();
+// Requisitando Express
 const express = require('express');
+// Requisitando documentação da API
+const swaggerUi = require('swagger-ui-express'); 
+const swaggerDocument = require('./swagger.json')
+// Requisitando o Middleware
 const bodyParser = require('body-parser');
+// Requisição do banco de dados
 const connectDB = require('./backend/config/database')
 // Chamada das rotas do projeto
 const usuariosRoutes = require('./backend/routes/usuariosRoutes');
 const alunosRoutes = require('./backend/routes/alunosRoutes');
 const turmasRoutes = require('./backend/routes/turmasRoutes')
 const alunosTurmasRoutes = require('./backend/routes/alunosTurmasRoutes')
+// Instanciando framework express e a porta
 const app = express();
 const port = process.env.PORT || 3000;
+// Chamando função para conectar ao banco
 connectDB();
 
 // Middleware
 app.use(bodyParser.json());
+//Rota da documentação
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Rotas de usuários
 app.use('/api', usuariosRoutes);

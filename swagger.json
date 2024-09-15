@@ -1,0 +1,58 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "API Escolar",
+      "description": "Documentação da API do Sistema Escolar"
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+      "/alunos": {
+        "get": {
+          "summary": "Lista todos os alunos",
+          "responses": {
+            "200": {
+              "description": "Uma lista de alunos"
+            }
+          }
+        },
+        "post": {
+          "summary": "Adiciona um novo aluno",
+          "parameters": [
+            {
+              "name": "aluno",
+              "in": "body",
+              "description": "Dados do aluno a ser adicionado",
+              "schema": {
+                "$ref": "#/definitions/Aluno"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Aluno criado com sucesso"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Aluno": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  
