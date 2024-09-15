@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 // URL de conexão com o MongoDB (substitua <your_mongodb_url> pela URL do seu banco de dados)
-const mongoURI = "mongodb+srv://dsnv:DsnvAtlas123@cluster0.iumgu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; 
-// 'mongodb://localhost:27017/sistema_escolar'; // URL do MongoDB
+const mongoURI = process.env.MONGO_CONNECTION_STRING;
 
 // Função para conectar ao banco de dados
 const connectDB = async () => {
