@@ -3,8 +3,8 @@ require('dotenv').config();
 // Requisitando Express
 const express = require('express');
 // Requisitando documentação da API
-const swaggerUi = require('swagger-ui-express'); 
-const swaggerDocument = require('./swagger.json')
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 // Requisitando o Middleware
 const bodyParser = require('body-parser');
 // Requisição do banco de dados
@@ -23,8 +23,7 @@ connectDB();
 // Middleware
 app.use(bodyParser.json());
 //Rota da documentação
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Rotas de usuários
 app.use('/api', usuariosRoutes);
 app.use('/api', alunosRoutes);
