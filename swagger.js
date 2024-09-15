@@ -5,7 +5,7 @@ const doc = {
     title: 'API com Node.js',
     description: 'API para sistema escolar'
   },
-  host: 'https://sistema-escolar-xi.vercel.app'
+  host: 'localhost:3000'
 };
 
 const outputFile = './swagger-output.json';
