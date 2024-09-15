@@ -32,8 +32,10 @@ app.use('/api', alunosRoutes);
 app.use('/api', turmasRoutes);
 app.use('/api', alunosTurmasRoutes);
 
+// Caso queira rodar o banco no local host
+// app.listen(port, () => {
+//   console.log(`Servidor rodando na porta ${port}`);
+// });
 
 // Iniciar o servidor
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-});
+module.exports = app;
