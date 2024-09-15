@@ -21,6 +21,7 @@ const port = process.env.PORT || 3000;
 connectDB();
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.json());
 //Rota da documentação
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
