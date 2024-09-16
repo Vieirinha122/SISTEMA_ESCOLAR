@@ -36,6 +36,5 @@ app.use('/api', alunosTurmasRoutes);
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
-
 // Iniciar o servidor
 module.exports = app;
