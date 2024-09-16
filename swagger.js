@@ -6,7 +6,7 @@ const doc = {
     description: 'API para sistema escolar'
   },
   host: 'localhost:3000',
-  // host: 'https://sistema-escolar-xi.vercel.app'
+  host: 'https://sistema-escolar-two.vercel.app'
 };
 
 const outputFile = './swagger-output.json';
