@@ -26,7 +26,7 @@ app.use(cors());
 app.use(bodyParser.json());
 //Rota da documentação
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use('/swagger-ui', express.static(path.join(__dirname, 'node_modules/swagger-ui-dist')));
+
 // Rotas de usuários
 app.use('/api', usuariosRoutes);
 app.use('/api', alunosRoutes);
