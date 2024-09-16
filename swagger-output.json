@@ -5,8 +5,8 @@
     "description": "API para sistema escolar",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
-  "basePath": "/api",
+  "host": "sistema-escolar-two.vercel.app",
+  "basePath": "/",
   "schemes": [
     "http"
   ],
