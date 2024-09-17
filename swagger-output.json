@@ -5,8 +5,8 @@
     "description": "API para sistema escolar",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
-  "basePath": "/api",
+  "host": "https://sistema-escolar-two.vercel.app",
+  "basePath": "/",
   "schemes": [
     "http"
   ],
@@ -28,6 +28,9 @@
                   "example": "any"
                 },
                 "senha": {
+                  "example": "any"
+                },
+                "matricula": {
                   "example": "any"
                 },
                 "tipo_usuario": {
@@ -143,6 +146,9 @@
                   "example": "any"
                 },
                 "senha": {
+                  "example": "any"
+                },
+                "matricula": {
                   "example": "any"
                 },
                 "classes": {

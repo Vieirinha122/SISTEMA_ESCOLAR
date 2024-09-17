@@ -4,8 +4,8 @@ const Usuarios = require('../models/usuariosModel');
 // Criar um novo estudante
 exports.criarAluno = async (req, res) => {
   try {
-    const { nome, email, senha, classes } = req.body;
-    const newStudent = new Student({ nome, email, senha, classes });
+    const { nome, email, senha, matricula,classes } = req.body;
+    const newStudent = new Student({ nome, email, senha, matricula,classes });
     await newStudent.save();
     res.status(201).json({ message: 'Estudante criado com sucesso', newStudent });
   } catch (err) {
