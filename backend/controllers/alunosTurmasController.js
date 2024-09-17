@@ -1,22 +1,24 @@
-const User = require('../models/usuariosModel');
+const AlunosTurmas = require('../models/alunosTurmasModel');
 
 // Criar um novo usuário
-exports.registerUsuario = async (req, res) => {
+exports.registerAlunoTurma = async (req, res) => {
   try {
-    const { nome_completo, email, senha, tipo_usuario} = req.body;
-    const newUser = new User({ nome_completo, email, senha, tipo_usuario});
-    await newUser.save();
-    res.status(201).json({ message: 'Usuário criado com sucesso', newUser });
+    const { aluno, turma} = req.body;
+    const newAlunoTurma = new AlunosTurmas({ aluno, turma});
+    await newAlunoTurma.save();
+    res.status(201).json({ message: 'Aluno adicionado à turma com sucesso', newAlunoTurma });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
 
 // Listar todos os usuários
-exports.getUsuarios = async (req, res) => {
+exports.getAlunosTurmas = async (req, res) => {
   try {
-    const usuarios = await User.find();
-    res.status(200).json(usuarios);
+    const aluTur = await AlunosTurmas.find();
+    // console.log(`nome do aluno: ${aluTur.aluno.nome}`);
+    console.log(JSON.stringify(aluTur));
+    res.status(200).json(aluTur);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

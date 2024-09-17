@@ -1,22 +1,20 @@
-const Student = require('../models/alunosModel'); // Caminho para seu modelo Student
-const Usuarios = require('../models/usuariosModel'); 
-
+const Turma = require('../models/turmasModel'); 
 // Criar um novo estudante
-exports.criarAluno = async (req, res) => {
+exports.criarTurma = async (req, res) => {
   try {
-    const { nome, email, senha, classes } = req.body;
-    const newStudent = new Student({ nome, email, senha, classes });
-    await newStudent.save();
-    res.status(201).json({ message: 'Estudante criado com sucesso', newStudent });
+    const { nome, ano, semestre } = req.body;
+    const newTurma = new Turma({ nome, ano, semestre });
+    await newTurma.save();
+    res.status(201).json({ message: 'Turma criada com sucesso', newTurma });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
 
 // Listar todos os estudantes
-exports.getAlunos = async (req, res) => {
+exports.getTurmas = async (req, res) => {
   try {
-    const students = await Student.find();
+    const students = await Turma.find();
     res.status(200).json(students);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -24,9 +22,9 @@ exports.getAlunos = async (req, res) => {
 };
 
 // Buscar estudante por ID
-exports.getAlunosById = async (req, res) => {
+exports.getTurmasById = async (req, res) => {
   try {
-    const student = await Student.findById(req.params.id);
+    const student = await Turma.findById(req.params.id);
     if (!student) {
       return res.status(404).json({ message: 'Estudante não encontrado' });
     }
@@ -37,9 +35,9 @@ exports.getAlunosById = async (req, res) => {
 };
 
 // Atualizar um estudante
-exports.updateAlunos = async (req, res) => {
+exports.updateTurmas = async (req, res) => {
   try {
-    const updatedStudent = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedStudent = await Turma.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updatedStudent) {
       return res.status(404).json({ message: 'Estudante não encontrado' });
     }
@@ -50,9 +48,9 @@ exports.updateAlunos = async (req, res) => {
 };
 
 // Deletar um estudante
-exports.deleteAlunos = async (req, res) => {
+exports.deleteTurmas = async (req, res) => {
   try {
-    const deletedStudent = await Student.findByIdAndDelete(req.params.id);
+    const deletedStudent = await Turma.findByIdAndDelete(req.params.id);
     if (!deletedStudent) {
       return res.status(404).json({ message: 'Estudante não encontrado' });
     }
