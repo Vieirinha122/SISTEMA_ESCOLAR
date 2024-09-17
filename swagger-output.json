@@ -151,6 +151,9 @@
                 "matricula": {
                   "example": "any"
                 },
+                "turno": {
+                  "example": "any"
+                },
                 "classes": {
                   "example": "any"
                 }
