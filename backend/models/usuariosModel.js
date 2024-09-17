@@ -7,6 +7,8 @@ const UsuariosSchema = new mongoose.Schema({
   tipo_usuario: {type: String, enum: ['Aluno','Professor','Coordenador'], required: true},
   data_nascimento: {type: Date},
   telefone: {type: String},
+  matricula: { type: String, required: true, unique: true },
+  tipo_usuario: {type: String, enum: ['Aluno','Professor','Coordenador'], required: true}
 });
 module.exports = mongoose.model('Usuario', UsuariosSchema);
 

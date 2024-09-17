@@ -3,8 +3,8 @@ const User = require('../models/usuariosModel');
 // Criar um novo usuário
 exports.registerUser = async (req, res) => {
   try {
-    const { nome_completo, email, senha, tipo} = req.body;
-    const newUser = new User({ nome_completo, email, senha, tipo});
+    const { nome_completo, email, matricula, senha, tipo} = req.body;
+    const newUser = new User({ nome_completo, email, matricula, senha, tipo});
     await newUser.save();
     res.status(201).json({ message: 'Usuário criado com sucesso', newUser });
   } catch (err) {
