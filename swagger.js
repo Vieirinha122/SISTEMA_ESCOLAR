@@ -5,12 +5,12 @@ const doc = {
     title: 'API com Node.js',
     description: 'API para sistema escolar'
   },
-  host: 'localhost:3000',
-  host: 'https://sistema-escolar-two.vercel.app'
+  host: 'localhost:3000'
+  // host: 'sistema-escolar-two.vercel.app',
 };
 
 const outputFile = './swagger-output.json';
-const routes = ['./backend/routes/usuariosRoutes', './backend/routes/alunosRoutes', './backend/routes/turmasRoutes', './backend/routes/alunosTurmasRoutes'];
+const routes = ['./backend/routes/usuariosRoutes', './backend/routes/alunosRoutes', './backend/routes/turmasRoutes', './backend/routes/alunosTurmasRoutes', './backend/routes/disciplinasRoutes'];
 
 swaggerAutogen(outputFile, routes, doc);
 
