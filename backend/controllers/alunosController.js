@@ -1,5 +1,5 @@
 const Student = require('../models/alunosModel'); // Caminho para seu modelo Student
-const Usuarios = require('../models/usuariosModel'); 
+// const Usuarios = require('../models/usuariosModel'); 
 
 // Criar um novo estudante
 exports.criarAluno = async (req, res) => {
