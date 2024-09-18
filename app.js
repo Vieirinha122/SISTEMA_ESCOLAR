@@ -11,12 +11,10 @@ const bodyParser = require('body-parser');
 // Requisição do banco de dados
 const connectDB = require('./backend/config/database')
 // Chamada das rotas do projeto
-const usuariosRoutes = require('./backend/routes/usuariosRoutes');
 const alunosRoutes = require('./backend/routes/alunosRoutes');
-const turmasRoutes = require('./backend/routes/turmasRoutes')
-const alunosTurmasRoutes = require('./backend/routes/alunosTurmasRoutes')
-const disciplinasRoutes = require('./backend/routes/disciplinasRoutes')
-const professorRoutes = require('./backend/routes/professorRoutes')
+const disciplinasRoutes = require('./backend/routes/disciplinasRoutes');
+const professorRoutes = require('./backend/routes/professorRoutes');
+const coordenadorRoutes = require('./backend/routes/coordenadorRoutes');
 const conceitosRoutes = require('./backend/routes/conceitosRoutes')
 // Instanciando framework express e a porta
 const app = express();
@@ -31,12 +29,10 @@ app.use(bodyParser.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Rotas de usuários
-app.use('/api', usuariosRoutes);
 app.use('/api', alunosRoutes);
-app.use('/api', turmasRoutes);
-app.use('/api', disciplinasRoutes);
-app.use('/api', alunosTurmasRoutes);
 app.use('/api', professorRoutes);
+app.use('/api', disciplinasRoutes);
+app.use('/api', coordenadorRoutes);
 app.use('/api', conceitosRoutes);
 
 // Caso queira rodar o banco no local host

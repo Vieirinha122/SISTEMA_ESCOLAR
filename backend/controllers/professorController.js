@@ -1,10 +1,9 @@
-const Professor = require('../models/professorModel');
+const Professor = require('../models/professorModel'); // Importação do modelo Professor
 
-// Criar um novo usuário
 exports.registerProfessor = async (req, res) => {
   try {
-    const { nome, email, senha, id_professor} = req.body;
-    const newProfessor = new Professor({ nome, email, senha, id_professor});
+    const { nome, email, senha, id_professor } = req.body;
+    const newProfessor = new Professor({ nome, email, senha, id_professor });
     await newProfessor.save();
     res.status(201).json({ message: 'Professor(a) criado com sucesso', newProfessor });
   } catch (err) {
@@ -15,8 +14,8 @@ exports.registerProfessor = async (req, res) => {
 // Listar todos os usuários
 exports.getProfessor = async (req, res) => {
   try {
-    const Professor = await Professor.find();
-    res.status(200).json(Professor);
+    const professores = await Professor.find();
+    res.status(200).json(professores);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -25,11 +24,11 @@ exports.getProfessor = async (req, res) => {
 // Buscar usuário por ID
 exports.getProfessorById = async (req, res) => {
   try {
-    const Professor = await Professor.findById(req.params.id);
-    if (!Professor) {
+    const professores = await Professor.findById(req.params.id);
+    if (!professores) {
       return res.status(404).json({ message: 'Professor(a) não encontrado' });
     }
-    res.status(200).json(Professor);
+    res.status(200).json(professores);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
