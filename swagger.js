@@ -10,7 +10,7 @@ const doc = {
 };
 
 const outputFile = './swagger-output.json';
-const routes = ['./backend/routes/alunosRoutes', './backend/routes/disciplinasRoutes', './backend/routes/professorRoutes', './backend/routes/coordenadorRoutes'];
+const routes = ['./backend/routes/alunosRoutes', './backend/routes/disciplinasRoutes', './backend/routes/professorRoutes', './backend/routes/coordenadorRoutes', './backend/routes/conceitosRoutes'];
 
 swaggerAutogen(outputFile, routes, doc);
 
