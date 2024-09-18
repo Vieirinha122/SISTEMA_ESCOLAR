@@ -512,7 +512,7 @@
         }
       }
     },
-    "/professor": {
+    "/professores": {
       "post": {
         "description": "",
         "parameters": [
@@ -559,7 +559,7 @@
         }
       }
     },
-    "/professor/{id}": {
+    "/professores/{id}": {
       "get": {
         "description": "",
         "parameters": [
