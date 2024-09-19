@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Dados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        #data-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        strong {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dados da Requisição</h1>
+    <div id="data-container">Carregando dados...</div>
+
+    <script>
+        // Substitua pela URL da sua API
+        fetch('http://localhost:3000/api/conceitos/66eb75d1ba4dda0b1fe3f67c') 
+            .then(response => response.json())
+            .then(data => {
+                console.log('Dados da API:', data); // Verifique a estrutura dos dados no console
+                displayData(data);
+            })
+            .catch(error => {
+                console.error('Erro ao buscar os dados:', error);
+                document.getElementById('data-container').innerHTML = 'Erro ao carregar dados.';
+            });
+
+        function displayData(data) {
+            const container = document.getElementById('data-container');
+
+            // Exibe os dados no HTML
+            container.innerHTML = `
+                <p><strong>Conceito:</strong> ${data.conceito !== undefined ? data.conceito : 'N/A'}</p>
+                <p><strong>Aluno:</strong> ${data.aluno && data.aluno.nome ? data.aluno.nome : 'N/A'}</p>
+                <p><strong>Disciplina:</strong> ${data.disciplina && data.disciplina.nome ? data.disciplina.nome : 'N/A'}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

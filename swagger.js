@@ -5,7 +5,7 @@ const doc = {
     title: 'API com Node.js',
     description: 'API para sistema escolar'
   },
-  host: 'localhost:3000'
+  host: 'localhost:3000',
   // host: 'sistema-escolar-two.vercel.app',
 };
 
