@@ -25,13 +25,13 @@ exports.getConceito = async (req, res) => {
 // Buscar estudante por ID
 exports.getConceitoById = async (req, res) => {
   try {
-    const conceitos = await Conceito.findById(req.params.id);
-    if (!conceitos) {
-      return res.status(404).json({ message: 'Conceito não encontrado' });
-    }
-    res.status(200).json(conceitos);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+    const conceito = await Conceito.findById(req.params.id)
+      .populate('aluno', 'nome')  // Preenche o campo aluno com o nome
+      .populate('disciplina', 'nome'); // Preenche o campo disciplina com o nome
+
+    res.json(conceito);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };
 
