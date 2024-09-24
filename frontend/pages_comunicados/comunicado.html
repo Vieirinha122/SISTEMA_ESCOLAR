@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Comunicados</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .comunicados-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .comunicado {
+      background-color: #fff;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 600px;
+    }
+    .comunicado h3 {
+      margin: 0;
+      font-size: 1.2em;
+    }
+    .comunicado p {
+      margin: 5px 0;
+    }
+    .comunicado .data {
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Comunicados</h1>
+  <div class="comunicados-container" id="comunicados-container">
+    <!-- Os comunicados serão carregados aqui -->
+  </div>
+
+  <script>
+    async function fetchComunicados() {
+      try {
+        // Faz a requisição GET para o endpoint que retorna os comunicados
+        const response = await fetch('http://localhost:3000/api/comunicados');
+        
+        if (!response.ok) {
+          throw new Error('Erro ao buscar comunicados');
+        }
+
+        // Converte a resposta em JSON
+        const comunicados = await response.json();
+
+        // Seleciona o contêiner onde os comunicados serão inseridos
+        const container = document.getElementById('comunicados-container');
+
+        // Limpa o container antes de adicionar novos elementos
+        container.innerHTML = '';
+
+        // Verifica se há comunicados
+        if (comunicados.length === 0) {
+          container.innerHTML = '<p>Nenhum comunicado encontrado.</p>';
+        } else {
+          // Itera sobre os comunicados e cria elementos HTML para cada um
+          comunicados.forEach(comunicado => {
+            const comunicadoDiv = document.createElement('div');
+            comunicadoDiv.classList.add('comunicado');
+            
+            comunicadoDiv.innerHTML = `
+              <h3>${comunicado.titulo}</h3>
+              <p>${comunicado.descricao}</p>
+              <p class="data">Data: ${new Date(comunicado.data).toLocaleDateString('pt-BR')}</p>
+            `;
+
+            // Adiciona o comunicado ao container
+            container.appendChild(comunicadoDiv);
+          });
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+      }
+    }
+
+    // Chama a função quando a página carrega
+    window.onload = fetchComunicados;
+  </script>
+</body>
+</html>
