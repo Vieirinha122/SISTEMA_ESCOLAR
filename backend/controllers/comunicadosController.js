@@ -15,10 +15,14 @@ exports.criarComunicado = async (req, res) => {
 // Listar todos os Comunicados
 exports.getComunicados = async (req, res) => {
   try {
-    const Comunicados = await Comunicado.find();
-    res.status(200).json(Comunicados);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+    const comunicados = await Comunicado.find()
+      .populate('id_turma', 'nome') // Preenche o campo id_turma com o nome da turma
+      .populate('id_professor', 'nome'); // Preenche o campo id_professor com o nome do professor
+    
+    res.json(comunicados);
+  } catch (error) {
+    console.error('Erro ao buscar comunicados:', error);
+    res.status(500).json({ message: 'Erro ao buscar comunicados' });
   }
 };
 

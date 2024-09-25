@@ -17,6 +17,7 @@ const professorRoutes = require('./backend/routes/professorRoutes');
 const coordenadorRoutes = require('./backend/routes/coordenadorRoutes');
 const conceitosRoutes = require('./backend/routes/conceitosRoutes');
 const comunicadosRoutes = require('./backend/routes/comunicadoRoutes');
+const turmasRoutes = require('./backend/routes/turmasRoutes');
 // Instanciando framework express e a porta
 const app = express();
 const port = process.env.PORT || 3000;
@@ -36,6 +37,7 @@ app.use('/api', disciplinasRoutes);
 app.use('/api', coordenadorRoutes);
 app.use('/api', conceitosRoutes);
 app.use('/api', comunicadosRoutes);
+app.use('/api', turmasRoutes);
 
 // Caso queira rodar o banco no local host
 app.listen(port, () => {
