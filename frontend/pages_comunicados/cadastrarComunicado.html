@@ -3,55 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastrar Comunicado</title>
+  <title>Teste de Cadastro de Comunicado</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      margin: 0;
       padding: 20px;
+      background-color: #f4f4f4;
     }
-    h1 {
-      text-align: center;
-    }
+
     .form-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    form {
       background-color: #fff;
       padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      max-width: 500px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
     label {
-      font-weight: bold;
+      display: block;
       margin-top: 10px;
+      font-weight: bold;
     }
-    input, textarea {
+
+    input, select, textarea {
       width: 100%;
       padding: 10px;
-      margin: 5px 0 15px 0;
-      border: 1px solid #ccc;
+      margin-top: 5px;
       border-radius: 4px;
-      box-sizing: border-box;
+      border: 1px solid #ccc;
+      font-size: 16px;
     }
+
     button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 15px;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
       border: none;
       border-radius: 4px;
+      background-color: #28a745;
+      color: #fff;
+      font-size: 18px;
       cursor: pointer;
     }
+
     button:hover {
-      background-color: #45a049;
+      background-color: #218838;
     }
+
     .message {
       margin-top: 20px;
-      font-size: 1.1em;
+      text-align: center;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -61,6 +70,16 @@
     <form id="comunicado-form">
       <label for="titulo">Título:</label>
       <input type="text" id="titulo" name="titulo" required>
+
+      <label for="id_turma">Turma:</label>
+      <select id="id_turma" name="id_turma" required>
+        <option value="">Selecione uma turma</option>
+      </select>
+
+      <label for="id_professor">Professor:</label>
+      <select id="id_professor" name="id_professor">
+        <option value="">Selecione um professor</option>
+      </select>
 
       <label for="descricao">Descrição:</label>
       <textarea id="descricao" name="descricao" rows="5" required></textarea>
@@ -74,6 +93,40 @@
   </div>
 
   <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Função para preencher o select de turmas
+      async function preencherTurmas() {
+        const response = await fetch('http://localhost:3000/api/turmas');
+        const turmas = await response.json();
+        const selectTurma = document.getElementById('id_turma');
+
+        turmas.forEach(turma => {
+          const option = document.createElement('option');
+          option.value = turma._id;
+          option.textContent = turma.nome;
+          selectTurma.appendChild(option);
+        });
+      }
+
+      // Função para preencher o select de professores
+      async function preencherProfessores() {
+        const response = await fetch('http://localhost:3000/api/professores');
+        const professores = await response.json();
+        const selectProfessor = document.getElementById('id_professor');
+
+        professores.forEach(professor => {
+          const option = document.createElement('option');
+          option.value = professor._id;
+          option.textContent = professor.nome;
+          selectProfessor.appendChild(option);
+        });
+      }
+
+      // Chama as funções para preencher os selects
+      await preencherTurmas();
+      await preencherProfessores();
+    });
+
     const form = document.getElementById('comunicado-form');
     const messageDiv = document.getElementById('message');
 
@@ -82,6 +135,8 @@
 
       // Obter os dados do formulário
       const titulo = document.getElementById('titulo').value;
+      const id_turma = document.getElementById('id_turma').value;
+      const id_professor = document.getElementById('id_professor').value;
       const descricao = document.getElementById('descricao').value;
       const data = document.getElementById('data').value;
 
@@ -94,6 +149,8 @@
           },
           body: JSON.stringify({
             titulo: titulo,
+            id_turma: id_turma,
+            id_professor: id_professor,
             descricao: descricao,
             data: data
           })
@@ -103,10 +160,15 @@
           throw new Error('Erro ao enviar comunicado');
         }
 
-        // Se for bem-sucedido, limpar o formulário e mostrar mensagem de sucesso
-        form.reset();
+        const result = await response.json();
         messageDiv.textContent = 'Comunicado enviado com sucesso!';
         messageDiv.style.color = 'green';
+
+        // Opcionalmente, exibe a resposta no console
+        console.log('Resposta do servidor:', result);
+        
+        // Limpar o formulário após o envio bem-sucedido
+        form.reset();
       } catch (error) {
         console.error('Erro:', error);
         messageDiv.textContent = 'Erro ao enviar comunicado.';

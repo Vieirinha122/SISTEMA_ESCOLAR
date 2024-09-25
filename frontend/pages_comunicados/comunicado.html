@@ -3,94 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Comunicados</title>
+  <title>Visualizar Comunicados</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      margin: 0;
       padding: 20px;
+      background-color: #f4f4f4;
     }
+
     h1 {
       text-align: center;
+      color: #333;
     }
-    .comunicados-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
     }
-    .comunicado {
-      background-color: #fff;
-      padding: 15px;
-      margin: 10px;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      max-width: 600px;
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
     }
-    .comunicado h3 {
-      margin: 0;
-      font-size: 1.2em;
+
+    th {
+      background-color: #f2f2f2;
     }
-    .comunicado p {
-      margin: 5px 0;
+
+    tr:hover {
+      background-color: #f1f1f1;
     }
-    .comunicado .data {
-      font-size: 0.9em;
-      color: #777;
+
+    .message {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
   <h1>Lista de Comunicados</h1>
-  <div class="comunicados-container" id="comunicados-container">
-    <!-- Os comunicados serão carregados aqui -->
-  </div>
+  <div class="message" id="message">Carregando comunicados...</div>
+  <table id="comunicados-table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Turma</th>
+        <th>Professor</th>
+        <th>Descrição</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Os dados dos comunicados serão inseridos aqui -->
+    </tbody>
+  </table>
 
   <script>
-    async function fetchComunicados() {
-      try {
-        // Faz a requisição GET para o endpoint que retorna os comunicados
-        const response = await fetch('http://localhost:3000/api/comunicados');
-        
-        if (!response.ok) {
-          throw new Error('Erro ao buscar comunicados');
-        }
+    document.addEventListener('DOMContentLoaded', async () => {
+      const messageDiv = document.getElementById('message');
+      const tableBody = document.querySelector('#comunicados-table tbody');
 
-        // Converte a resposta em JSON
+      try {
+        const response = await fetch('http://localhost:3000/api/comunicados'); // URL da rota GET dos comunicados
         const comunicados = await response.json();
 
-        // Seleciona o contêiner onde os comunicados serão inseridos
-        const container = document.getElementById('comunicados-container');
-
-        // Limpa o container antes de adicionar novos elementos
-        container.innerHTML = '';
-
-        // Verifica se há comunicados
         if (comunicados.length === 0) {
-          container.innerHTML = '<p>Nenhum comunicado encontrado.</p>';
-        } else {
-          // Itera sobre os comunicados e cria elementos HTML para cada um
-          comunicados.forEach(comunicado => {
-            const comunicadoDiv = document.createElement('div');
-            comunicadoDiv.classList.add('comunicado');
-            
-            comunicadoDiv.innerHTML = `
-              <h3>${comunicado.titulo}</h3>
-              <p>${comunicado.descricao}</p>
-              <p class="data">Data: ${new Date(comunicado.data).toLocaleDateString('pt-BR')}</p>
-            `;
-
-            // Adiciona o comunicado ao container
-            container.appendChild(comunicadoDiv);
-          });
+          messageDiv.textContent = 'Nenhum comunicado encontrado.';
+          return;
         }
-      } catch (error) {
-        console.error('Erro:', error);
-      }
-    }
 
-    // Chama a função quando a página carrega
-    window.onload = fetchComunicados;
+        messageDiv.style.display = 'none';
+
+        comunicados.forEach(comunicado => {
+          const row = document.createElement('tr');
+
+          const tituloCell = document.createElement('td');
+          tituloCell.textContent = comunicado.titulo;
+          row.appendChild(tituloCell);
+
+          const turmaCell = document.createElement('td');
+          turmaCell.textContent = comunicado.id_turma ? comunicado.id_turma.nome : 'N/A'; // Verifica se id_turma está definido
+          row.appendChild(turmaCell);
+
+          const professorCell = document.createElement('td');
+          professorCell.textContent = comunicado.id_professor ? comunicado.id_professor.nome : 'N/A'; // Verifica se id_professor está definido
+          row.appendChild(professorCell);
+
+          const descricaoCell = document.createElement('td');
+          descricaoCell.textContent = comunicado.descricao;
+          row.appendChild(descricaoCell);
+
+          const dataCell = document.createElement('td');
+          dataCell.textContent = new Date(comunicado.data).toLocaleDateString();
+          row.appendChild(dataCell);
+
+          tableBody.appendChild(row);
+        });
+      } catch (error) {
+        console.error('Erro ao buscar comunicados:', error);
+        messageDiv.textContent = 'Erro ao carregar os comunicados.';
+        messageDiv.style.color = 'red';
+      }
+    });
   </script>
 </body>
 </html>

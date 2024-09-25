@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro de Horários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #tabelaHorarios {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quadro de Horários</h1>
+
+    <label for="turma">Selecionar Turma:</label>
+    <select id="turma">
+        <option value="Turma A">ADS-M 3ª</option>
+        <option value="Turma B">Turma B</option>
+        <option value="Turma C">Turma C</option>
+    </select>
+    <button id="buscarHorarios">Buscar Horários</button>
+
+    <table id="tabelaHorarios">
+        <thead>
+            <tr>
+                <th>Dia</th>
+                <th>Horário</th>
+                <th>Disciplina</th>
+                <th>Professor</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        document.getElementById('buscarHorarios').addEventListener('click', function() {
+            const turmaSelecionada = document.getElementById('turma').value;
+            const tabela = document.getElementById('tabelaHorarios');
+            const tbody = tabela.querySelector('tbody');
+            
+            // Limpa a tabela antes de popular
+            tbody.innerHTML = '';
+            
+            // Fazendo a requisição GET para buscar horários da turma selecionada
+            fetch(`http://localhost:3000/api/horarios/${turmaSelecionada}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar horários');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Exibir a tabela
+                tabela.style.display = 'table';
+                
+                // Populando a tabela com os dados recebidos
+                for (let dia in data.dias) {
+                    data.dias[dia].forEach(horario => {
+                        const row = document.createElement('tr');
+                        
+                        const diaCell = document.createElement('td');
+                        diaCell.textContent = dia;
+                        
+                        const horaCell = document.createElement('td');
+                        horaCell.textContent = horario.hora;
+                        
+                        const disciplinaCell = document.createElement('td');
+                        disciplinaCell.textContent = horario.disciplina;
+                        
+                        const professorCell = document.createElement('td');
+                        professorCell.textContent = horario.professor;
+                        
+                        row.appendChild(diaCell);
+                        row.appendChild(horaCell);
+                        row.appendChild(disciplinaCell);
+                        row.appendChild(professorCell);
+                        
+                        tbody.appendChild(row);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Não foi possível buscar os horários');
+            });
+        });
+    </script>
+</body>
+</html>
