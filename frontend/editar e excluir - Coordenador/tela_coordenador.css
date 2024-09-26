@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif; 
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden; 
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #004080; 
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px; 
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info h2 {
+    font-size: 1.2em;
+    margin: 0;
+    font-weight: 700; 
+}
+
+.info p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.menu-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: left;
+    color: #004080; 
+    font-family: 'Montserrat', Arial, sans-serif; 
+    font-weight: 700; 
+    opacity: 0; 
+    transform: translateY(-20px); 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.menu-button:hover {
+    background-color: #e0e0e0;
+    color: #0070ff; 
+}
+
+.custom-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #004080, #0070ff); 
+    color: #fff;
+    border: none;
+    padding: 0;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 100%; 
+    height: 50px; 
+    font-weight: 700; 
+    opacity: 0; 
+    transform: translateY(-20px); 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.custom-button img {
+    height: auto;
+    max-height: 100%; 
+}
+
+
+#student-list li {
+    background-color: white;
+    color: black;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .action-buttons button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-buttons button.edit {
+    background-color: #ffeb3b;
+    color: black;
+  }
+  
+  .action-buttons button.delete {
+    background-color: #f44336;
+    color: white;
+  }
+
+
+.main-content {
+    flex-grow: 1;
+    background-color: #004080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.senac-logo {
+    transform: scale(0.1); 
+    opacity: 0; 
+    transition: transform 0.5s ease, opacity 0.5s ease; 
+}
+
+
+@keyframes growAndShake {
+    0% {
+        transform: scale(0.1); 
+        opacity: 0; 
+    }
+    50% {
+        transform: scale(1); 
+        opacity: 1; 
+    }
+    60% {
+        transform: scale(1.1); 
+    }
+    70% {
+        transform: rotate(-5deg); 
+    }
+    80% {
+        transform: rotate(5deg);
+    }
+    90% {
+        transform: rotate(-2deg); 
+    }
+    100% {
+        transform: rotate(0deg); 
+        opacity: 1; 
+    }
+}
+
+.senac-logo.show {
+    animation: growAndShake 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-button.show, .custom-button.show {
+    animation: fadeIn 0.5s forwards; 
+}
