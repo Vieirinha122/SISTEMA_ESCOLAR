@@ -1,180 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teste de Cadastro de Comunicado</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f4f4f4;
-    }
-
-    .form-container {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 400px;
-      margin: 0 auto;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 20px;
-      border: none;
-      border-radius: 4px;
-      background-color: #28a745;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
-    .message {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 18px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicados</title>
+    <link rel="stylesheet" href="css/cadastrarComunicado.css">
 </head>
 <body>
-  <h1>Cadastrar Comunicado</h1>
-  <div class="form-container">
-    <form id="comunicado-form">
-      <label for="titulo">Título:</label>
-      <input type="text" id="titulo" name="titulo" required>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <p>Coordenação</p>
+            </div>
+            
+            
+            <div class="profile">
+                <img src="imagens/avatar.png" alt="Avatar Coordenação" class="avatar">
+                <div class="info">
+                    <h2 id="nome-coordenacao">Coordenação</h2>
+                </div>
+            </div>
 
-      <label for="id_turma">Turma:</label>
-      <select id="id_turma" name="id_turma" required>
-        <option value="">Selecione uma turma</option>
-      </select>
+            <nav class="menu">
+                <button class="menu-button">Comunicados</button>
+                <button class="menu-button">Quadro de horários</button>
+                <button class="menu-button">Faltas</button>
+                <button class="menu-button">Cadastros</button>
+                <button class="menu-button">Conceitos</button>
+                <button class="menu-button">Registros</button>
+                <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
+                    <img src="imagens/logoGeekieOneBranco.padding" alt="Geekie One">
+                </a>
+            </nav>
+        </div>
 
-      <label for="id_professor">Professor:</label>
-      <select id="id_professor" name="id_professor">
-        <option value="">Selecione um professor</option>
-      </select>
+        <div class="main-content">
+            <h1>Comunicados</h1>
+            <div class="comunicados-form">
+                <h2>Emissão de Comunicados</h2>
+                <form>
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo" name="titulo">
+                    
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" name="descricao"></textarea>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="turma">Turma</label>
+                            <select id="turma" name="turma">
+                                <option value="">Selecione a turma</option>
+                                <option value="turma1">Turma 1</option>
+                                <option value="turma2">Turma 2</option>
+                            </select>
+                        </div>
 
-      <label for="descricao">Descrição:</label>
-      <textarea id="descricao" name="descricao" rows="5" required></textarea>
+                        <div class="form-group">
+                            <label for="data">Data</label>
+                            <input type="text" id="data" name="data" placeholder="dd/mm/aaaa">
+                        </div>
 
-      <label for="data">Data:</label>
-      <input type="date" id="data" name="data" required>
-
-      <button type="submit">Enviar Comunicado</button>
-    </form>
-    <div class="message" id="message"></div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      // Função para preencher o select de turmas
-      async function preencherTurmas() {
-        const response = await fetch('http://localhost:3000/api/turmas');
-        const turmas = await response.json();
-        const selectTurma = document.getElementById('id_turma');
-
-        turmas.forEach(turma => {
-          const option = document.createElement('option');
-          option.value = turma._id;
-          option.textContent = turma.nome;
-          selectTurma.appendChild(option);
-        });
-      }
-
-      // Função para preencher o select de professores
-      async function preencherProfessores() {
-        const response = await fetch('http://localhost:3000/api/professores');
-        const professores = await response.json();
-        const selectProfessor = document.getElementById('id_professor');
-
-        professores.forEach(professor => {
-          const option = document.createElement('option');
-          option.value = professor._id;
-          option.textContent = professor.nome;
-          selectProfessor.appendChild(option);
-        });
-      }
-
-      // Chama as funções para preencher os selects
-      await preencherTurmas();
-      await preencherProfessores();
-    });
-
-    const form = document.getElementById('comunicado-form');
-    const messageDiv = document.getElementById('message');
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault(); // Previne o comportamento padrão do formulário
-
-      // Obter os dados do formulário
-      const titulo = document.getElementById('titulo').value;
-      const id_turma = document.getElementById('id_turma').value;
-      const id_professor = document.getElementById('id_professor').value;
-      const descricao = document.getElementById('descricao').value;
-      const data = document.getElementById('data').value;
-
-      try {
-        // Fazer a requisição POST para o backend
-        const response = await fetch('http://localhost:3000/api/comunicados', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            titulo: titulo,
-            id_turma: id_turma,
-            id_professor: id_professor,
-            descricao: descricao,
-            data: data
-          })
-        });
-
-        if (!response.ok) {
-          throw new Error('Erro ao enviar comunicado');
-        }
-
-        const result = await response.json();
-        messageDiv.textContent = 'Comunicado enviado com sucesso!';
-        messageDiv.style.color = 'green';
-
-        // Opcionalmente, exibe a resposta no console
-        console.log('Resposta do servidor:', result);
-        
-        // Limpar o formulário após o envio bem-sucedido
-        form.reset();
-      } catch (error) {
-        console.error('Erro:', error);
-        messageDiv.textContent = 'Erro ao enviar comunicado.';
-        messageDiv.style.color = 'red';
-      }
-    });
-  </script>
+                        <div class="form-group">
+                            <label for="professor">Professor</label>
+                            <select id="professor" name="professor">
+                                <option value="">Selecione o professor</option>
+                                <option value="prof1">Professor 1</option>
+                                <option value="prof2">Professor 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-publicar">Publicar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/cadastrarComunicado.js"></script>
 </body>
 </html>
