@@ -15,11 +15,11 @@ exports.criarDisciplinas = async (req, res) => {
 // Listar todos os estudantes
 exports.getDisciplinas = async (req, res) => {
   try {
-    const disciplinas = await Disciplina.find();
-    res.status(200).json(disciplinas);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+    const disciplinas = await Disciplina.find({}, 'nome'); // Busca apenas o campo 'nome'
+    res.json(disciplinas);
+} catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar disciplinas' });
+}
 };
 
 // Buscar estudante por ID

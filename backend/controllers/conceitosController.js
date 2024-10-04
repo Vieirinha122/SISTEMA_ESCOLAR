@@ -2,24 +2,26 @@ const Conceito = require('../models/conceitosModel');
 
 // Criar um novo estudante
 exports.criarConceito = async (req, res) => {
-  try {
-    const { conceito, aluno, disciplina } = req.body;
-    const newConceito = new Conceito({ conceito, aluno, disciplina });
-    await newConceito.save();
-    res.status(201).json({ message: 'Conceito criado com sucesso', newConceito });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+  const { conceito, aluno, disciplina } = req.body;
+    try {
+        const novoConceito = new Conceito({ conceito, aluno, disciplina });
+        await novoConceito.save();
+        res.status(201).json({ message: 'Conceito cadastrado com sucesso' });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao cadastrar conceito' });
+    }
 };
 
 // Listar todos os estudantes
 exports.getConceito = async (req, res) => {
   try {
-    const conceitos = await Conceito.find();
-    res.status(200).json(conceitos);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+    const conceitos = await Conceito.find()
+        .populate('aluno', 'nome') // Popula o nome do aluno
+        .populate('disciplina', 'nome'); // Popula o nome da disciplina
+    res.json(conceitos);
+} catch (err) {
+    res.status(500).json({ message: err.message });
+}
 };
 
 // Buscar estudante por ID
@@ -38,25 +40,29 @@ exports.getConceitoById = async (req, res) => {
 // Atualizar um estudante
 exports.updateConceito = async (req, res) => {
   try {
-    const updatedConceito = await Conceito.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedConceito) {
-      return res.status(404).json({ message: 'Conceito não encontrado' });
-    }
-    res.status(200).json({ message: 'Conceito atualizado com sucesso', updatedConceito });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+    const conceito = await Conceito.findById(req.params.id);
+    if (!conceito) return res.status(404).json({ message: 'Conceito não encontrado' });
+
+    conceito.conceito = req.body.conceito || conceito.conceito;
+    conceito.aluno = req.body.aluno || conceito.aluno;
+    conceito.disciplina = req.body.disciplina || conceito.disciplina;
+
+    const conceitoAtualizado = await conceito.save();
+    res.json(conceitoAtualizado);
+} catch (err) {
+    res.status(500).json({ message: err.message });
+}
 };
 
 // Deletar um estudante
 exports.deleteConceito = async (req, res) => {
   try {
-    const deletedConceito = await Turma.findByIdAndDelete(req.params.id);
-    if (!deletedConceito) {
-      return res.status(404).json({ message: 'Conceito não encontrado' });
-    }
-    res.status(200).json({ message: 'Conceito deletado com sucesso' });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+    const conceito = await Conceito.findById(req.params.id);
+    if (!conceito) return res.status(404).json({ message: 'Conceito não encontrado' });
+
+    await conceito.remove();
+    res.json({ message: 'Conceito excluído com sucesso' });
+} catch (err) {
+    res.status(500).json({ message: err.message });
+}
 };

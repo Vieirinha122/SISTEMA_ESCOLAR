@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <img src="../imagens/Senac_mediotec.png" alt="Logo Senac Mediotec" class="logo">
+        <form id="loginForm">
+            <select name="cargo" id="cargo">
+                <option value="estudante">Aluno</option>
+                <option value="coordenador">Professor</option>
+                <option value="diretor">Coordenador</option>
+            </select>
+            <p id="message" class="hidden"></p>
+            
+            <div class="input-container" id="matriculaContainer">
+                <label for="matricula">Matrícula:</label>
+                <input type="text" id="matricula" name="matricula" placeholder="Matrícula">
+                <img src="../imagens/avatar.png" alt="Avatar" class="input-icon">
+            </div>
+
+            <div class="input-container" id="emailContainer" style="display: none;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email">
+                <img src="../imagens/email.png" alt="Email Icon" class="input-icon">
+            </div>
+
+            <label for="senha">Senha:</label>
+            <div class="input-container">
+                <input type="password" id="senha" name="senha" placeholder="Senha">
+                <img src="../imagens/cadeado-seguro.png" alt="Cadeado Seguro" class="input-icon">
+            </div>
+
+            <button type="submit">Entrar</button>
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+body {
+    background: linear-gradient(to right, #004A8D, #004A8D);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+
+.login-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+}
+
+
+.logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+label {
+    margin-bottom: 5px;
+    text-align: left;
+    color: #004B8D;
+    font-weight: bold;
+    width: 100%; 
+    display: block;
+}
+
+
+.input-container {
+    position: relative;
+    width: 100%; 
+    margin-bottom: 15px; 
+}
+
+/* Estilo dos inputs */
+input {
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #000;
+    border-radius: 0;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left; 
+}
+
+
+input:focus {
+    border-bottom: 2px solid #004B8D;
+}
+
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: auto;
+    right: 15px;
+    pointer-events: none;
+}
+
+
+button {
+    padding: 8px 12px;
+    background-color: #004B8D;
+    color: white;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    width: calc(100% - 30px); 
+    max-width: 200px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+
+button:hover {
+    background-color: #098BBD;
+}
+
+
+.error-message {
+    background-color: #d31b2a;
+    color: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d30a1e;
+    border-radius: 5px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+.forgot-password {
+    color: #004B8D;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    display: block; 
+    margin-top: 10px; 
+    text-align: center; 
+}
+
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+#cargo {
+    background: url('imagens/icone-seta.png') no-repeat right center;
+    background-size: 20px;
+    padding: 10px;
+    padding-right: 40px; 
+    width: calc(100% - 30px);
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 15px; 
+    border: 2px solid #000; 
+    border-radius: 0; 
+    box-sizing: border-box; 
+    text-align: center; 
+}
+
+
+#cargo option {
+    background: none;
+}
+
+
+#matriculaContainer, #emailContainer {
+    width: 100%; 
+    text-align: left; 
+}

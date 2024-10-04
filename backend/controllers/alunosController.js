@@ -15,11 +15,11 @@ exports.criarAluno = async (req, res) => {
 // Listar todos os estudantes
 exports.getAlunos = async (req, res) => {
   try {
-    const students = await Student.find();
-    res.status(200).json(students);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+    const alunos = await Aluno.find({}, 'nome'); // Busca apenas o campo 'nome'
+    res.json(alunos);
+} catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar alunos' });
+}
 };
 
 // Buscar estudante por ID

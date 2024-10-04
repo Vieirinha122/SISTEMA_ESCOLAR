@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Função para carregar os alunos do banco de dados
   async function loadStudents() {
       try {
-          const response = await fetch('http://localhost:3000/api/alunos'); // Rota atualizada para pegar os alunos
+          const response = await fetch('https://sistema-escolar-two.vercel.app/api/alunos'); // Rota atualizada para pegar os alunos
           const students = await response.json();
   
           students.forEach(student => {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function deleteStudent(id) {
   try {
       if (confirm("Tem certeza que deseja excluir este aluno?")) {
-          const response = await fetch(`http://localhost:3000/api/alunos/${id}`, { // Corrigido para usar aspas
+          const response = await fetch(`https://sistema-escolar-two.vercel.app/api/alunos/${id}`, { // Corrigido para usar aspas
               method: 'DELETE'
           });
           const result = await response.json();
@@ -59,7 +59,7 @@ async function editStudent(id, currentName, currentTurma, currentTurno) {
       const newTurno = prompt("Edite o turno do aluno:", currentTurno);
   
       if (newName && newTurma && newTurno) {
-          const response = await fetch(`http://localhost:3000/api/alunos/${id}`, { // Corrigido para usar aspas
+          const response = await fetch(`https://sistema-escolar-two.vercel.appapi/alunos/${id}`, { // Corrigido para usar aspas
               method: 'PUT',
               headers: {
                   'Content-Type': 'application/json'

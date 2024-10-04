@@ -1,100 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Conceito</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        #form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: auto;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .message {
-            margin-top: 10px;
-        }
-    </style>
+    <title>Tela de cadastrar conceitos</title>
+    <link rel="stylesheet" href="../tela_professor/tela_professor.css">
+    <link rel="stylesheet" href="../pages_conceitos/css/cadastrar_conceitos.css">
 </head>
 <body>
-    <h1>Cadastro de Conceito</h1>
-    <div id="form-container">
-        <form id="conceito-form">
-            <label for="conceito">Conceito:</label>
-            <input type="number" id="conceito" name="conceito" required>
-
-            <label for="aluno">Aluno (ID):</label>
-            <input type="text" id="aluno" name="aluno" required>
-
-            <label for="disciplina">Disciplina (ID):</label>
-            <input type="text" id="disciplina" name="disciplina" required>
-
-            <button type="submit">Cadastrar Conceito</button>
-        </form>
-        <div id="message" class="message"></div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <p>Professor</p>
+            </div>
+            <div class="profile">
+                <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
+                <div class="info">
+                    <h2 id="nome-professor">Nome do Professor</h2>
+                    <p id="id-professor"></p> 
+                </div>
+            </div>
+            <nav class="menu">
+                <button class="menu-button">Avisos</button>
+                <button class="menu-button">Quadro de horários</button>
+                <button class="menu-button">Faltas</button>
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button">Conceitos</button>
+                    <ul class="dropdown-content">
+                        <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
+                        <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
+                    </ul>
+                </div>
+                <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
+                    <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
+                </a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <h1>Cadastro de Conceito</h1>
+            <div id="form-container">
+                <form id="conceito-form">
+                    <label for="conceito">Conceito:</label>
+                    <input type="number" id="conceito" name="conceito" required>
+            
+                    <label for="aluno">Aluno:</label>
+                    <select id="aluno" name="aluno" required></select>
+            
+                    <label for="disciplina">Disciplina:</label>
+                    <select id="disciplina" name="disciplina" required></select>
+            
+                    <button type="submit">Cadastrar Conceito</button>
+                </form>
+                <div id="message" class="message"></div> <!-- Mensagem de feedback -->
+            </div>
+    <div>
+        <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
     </div>
-
-    <script>
-        document.getElementById('conceito-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const conceito = document.getElementById('conceito').value;
-            const aluno = document.getElementById('aluno').value;
-            const disciplina = document.getElementById('disciplina').value;
-
-            const data = {
-                conceito: parseInt(conceito),
-                aluno: aluno,
-                disciplina: disciplina
-            };
-
-            fetch('http://localhost:3000/api/conceitos', { // Substitua pela URL da sua API de cadastro
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result); // Verifique a resposta da API
-                document.getElementById('message').textContent = 'Conceito cadastrado com sucesso!';
-                document.getElementById('conceito-form').reset();
-            })
-            .catch(error => {
-                console.error('Erro ao cadastrar o conceito:', error);
-                document.getElementById('message').textContent = 'Erro ao cadastrar o conceito.';
-            });
-        });
-    </script>
+    <script src="../tela_professor/tela_professor.js"></script>
+    <script src="../pages_conceitos/scripts/cadastrar_conceitos.js"></script>
 </body>
 </html>
