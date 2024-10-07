@@ -8,7 +8,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
 .login-container {
     background-color: white;
     padding: 30px;
@@ -18,12 +17,10 @@ body {
     text-align: center;
 }
 
-
 .logo {
     width: 120px;
     margin-bottom: 20px;
 }
-
 
 form {
     display: flex;
@@ -31,24 +28,21 @@ form {
     align-items: center;
 }
 
-
 label {
     margin-bottom: 5px;
     text-align: left;
     color: #004B8D;
     font-weight: bold;
-    width: 100%; 
+    width: 100%;
     display: block;
 }
 
-
 .input-container {
     position: relative;
-    width: 100%; 
-    margin-bottom: 15px; 
+    width: 100%;
+    margin-bottom: 15px;
 }
 
-/* Estilo dos inputs */
 input {
     padding: 10px;
     border: none;
@@ -58,14 +52,12 @@ input {
     font-size: 16px;
     width: 100%;
     box-sizing: border-box;
-    text-align: left; 
+    text-align: left;
 }
-
 
 input:focus {
     border-bottom: 2px solid #004B8D;
 }
-
 
 .input-icon {
     position: absolute;
@@ -77,7 +69,6 @@ input:focus {
     pointer-events: none;
 }
 
-
 button {
     padding: 8px 12px;
     background-color: #004B8D;
@@ -85,18 +76,16 @@ button {
     border: none;
     border-radius: 0;
     cursor: pointer;
-    width: calc(100% - 30px); 
+    width: calc(100% - 30px);
     max-width: 200px;
     box-sizing: border-box;
     margin-bottom: 20px;
     font-size: 14px;
 }
 
-
 button:hover {
     background-color: #098BBD;
 }
-
 
 .error-message {
     background-color: #d31b2a;
@@ -107,50 +96,44 @@ button:hover {
     border-radius: 5px;
 }
 
-
 .hidden {
     display: none;
 }
-
 
 .forgot-password {
     color: #004B8D;
     text-decoration: none;
     font-size: 14px;
     font-family: Arial, sans-serif;
-    display: block; 
-    margin-top: 10px; 
-    text-align: center; 
+    display: block;
+    margin-top: 10px;
+    text-align: center;
 }
-
 
 .forgot-password:hover {
     text-decoration: underline;
 }
 
-
 #cargo {
     background: url('imagens/icone-seta.png') no-repeat right center;
     background-size: 20px;
     padding: 10px;
-    padding-right: 40px; 
+    padding-right: 40px;
     width: calc(100% - 30px);
     height: 40px;
     font-size: 16px;
-    margin-bottom: 15px; 
-    border: 2px solid #000; 
-    border-radius: 0; 
-    box-sizing: border-box; 
-    text-align: center; 
+    margin-bottom: 15px;
+    border: 2px solid #000;
+    border-radius: 0;
+    box-sizing: border-box;
+    text-align: center;
 }
-
 
 #cargo option {
     background: none;
 }
 
-
 #matriculaContainer, #emailContainer {
-    width: 100%; 
-    text-align: left; 
+    width: 100%;
+    text-align: left;
 }

@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/frontend/teste/style.css">
-    <script src="./frontend/teste/script.js" defer></script>
+    <script src="/frontend/teste/script.js" defer></script>
 </head>
 <body>
     <div class="login-container">
         <img src="./frontend/imagens/Senac_mediotec.png" alt="Logo Senac Mediotec" class="logo">
         <form id="loginForm">
             <select name="cargo" id="cargo">
-                <option value="estudante">Aluno</option>
-                <option value="coordenador">Professor</option>
-                <option value="diretor">Coordenador</option>
+                <option value="aluno">Aluno</option>
+                <option value="professor">Professor</option>
+                <option value="coordenador">Coordenador</option>
             </select>
+
             <p id="message" class="hidden"></p>
-            
+
             <div class="input-container" id="matriculaContainer">
                 <label for="matricula">Matrícula:</label>
                 <input type="text" id="matricula" name="matricula" placeholder="Matrícula">

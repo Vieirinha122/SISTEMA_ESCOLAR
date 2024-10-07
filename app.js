@@ -32,7 +32,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Rotas de usuários
 app.use('/api', alunosRoutes);
-app.use('/professores', professoresRoutes);
+app.use('/api', professoresRoutes);
 app.use('/api', disciplinasRoutes);
 app.use('/api', coordenadorRoutes);
 app.use('/api', conceitosRoutes);
