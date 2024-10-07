@@ -1,43 +1,81 @@
-fetch('https://sistema-escolar-two.vercel.app/api/conceitos')
-.then(response => response.json())
-.then(data => {
-  console.log('Dados da API:', data); 
-  displayData(data); 
-})
-.catch(error => {
-  console.error('Erro ao buscar os dados:', error);
-  document.getElementById('data-container').innerHTML = 'Erro ao carregar dados.';
-});
+const conceitosTableBody = document.getElementById('conceitos-table-body');
+        // Função para carregar conceitos
+        async function carregarConceitos() {
+            try {
+                const response = await fetch('https://sistema-escolar-two.vercel.app/api/conceitos'); // Altere para o seu endpoint de conceitos
+                const conceitos = await response.json();
 
-function displayData(data) {
-const container = document.getElementById('data-container');
-container.innerHTML = ''; // Limpa o container
+                // Limpa a tabela antes de preencher
+                conceitosTableBody.innerHTML = '';
 
-data.forEach(aluno => {
-  const alunoId = aluno.id; // Supondo que cada aluno tem um 'id' único
-  container.innerHTML += `
-    <div class="card" id="aluno-${alunoId}">
-      <p><strong>Nome do Aluno:</strong> ${aluno.nome ?? 'N/A'}</p>
-      <p><strong>Disciplina:</strong> ${aluno.disciplina ?? 'N/A'}</p>
-      <p><strong>Conceito:</strong> ${aluno.conceito ?? 'N/A'}</p>
-      <button onclick="deleteConceito('${alunoId}')">Excluir Conceito</button>
-    </div>`;
-});
-}
+                conceitos.forEach(conceito => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${conceito.aluno.nome}</td>
+                        <td>${conceito.disciplina.nome}</td>
+                        <td>${conceito.conceito}</td>
+                        <td>
+                            <button onclick="editarConceito('${conceito._id}')">Editar</button>
+                            <button onclick="excluirConceito('${conceito._id}')">Excluir</button>
+                        </td>
+                    `;
+                    conceitosTableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar conceitos:', error);
+            }
+        }
 
-function deleteConceito(id) {
-fetch(`https://sistema-escolar-two.vercel.app/api/conceitos/${id}`, {
-  method: 'DELETE',
-})
-.then(response => {
-  if (response.ok) {
-    document.getElementById(`aluno-${id}`).remove(); // Remove o elemento HTML
-    console.log(`Conceito do aluno ${id} excluído com sucesso.`);
-  } else {
-    console.error(`Erro ao excluir conceito do aluno ${id}`);
-  }
-})
-.catch(error => {
-  console.error('Erro ao excluir conceito:', error);
-});
-}
+        // Função para editar conceito
+        function editarConceito(id) {
+            const novoConceito = prompt("Digite o novo conceito:");
+            if (novoConceito !== null) {
+                atualizarConceito(id, novoConceito);
+            }
+        }
+
+        // Função para atualizar conceito no backend
+        async function atualizarConceito(id, novoConceito) {
+            try {
+                const response = await fetch(`https://sistema-escolar-two.vercel.app/api/conceitos/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ conceito: Number(novoConceito) }),
+                });
+
+                if (response.ok) {
+                    alert('Conceito atualizado com sucesso!');
+                    carregarConceitos(); // Atualiza a lista
+                } else {
+                    alert('Erro ao atualizar conceito.');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+            }
+        }
+
+        // Função para excluir conceito
+        async function excluirConceito(id) {
+            const confirmacao = confirm("Tem certeza que deseja excluir este conceito?");
+            if (confirmacao) {
+                try {
+                    const response = await fetch(`https://sistema-escolar-two.vercel.app/api/conceitos${id}`, {
+                        method: 'DELETE',
+                    });
+
+                    if (response.ok) {
+                        alert('Conceito excluído com sucesso!');
+                        carregarConceitos(); // Atualiza a lista
+                    } else {
+                        alert('Erro ao excluir conceito.');
+                    }
+                } catch (error) {
+                    console.error('Erro:', error);
+                }
+            }
+        }
+
+        // Carregar conceitos ao iniciar
+        carregarConceitos();
