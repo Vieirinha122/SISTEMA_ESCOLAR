@@ -69,6 +69,16 @@ input:focus {
     pointer-events: none;
 }
 
+.input-icon-avatar {
+    position: absolute;
+    top: 50%;
+    transform: translateY(20%);
+    width: 14px;
+    height: auto;
+    right: 15px;
+    pointer-events: none;
+}
+
 button {
     padding: 8px 12px;
     background-color: #004B8D;
