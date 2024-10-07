@@ -15,7 +15,7 @@ exports.criarAluno = async (req, res) => {
 // Listar todos os estudantes
 exports.getAlunos = async (req, res) => {
   try {
-    const alunos = await Student.find({}, 'nome'); // Busca apenas o campo 'nome'
+    const alunos = await Student.find(); // Busca apenas o campo 'nome'
     res.json(alunos);
 } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar alunos' });

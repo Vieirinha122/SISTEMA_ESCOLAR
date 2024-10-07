@@ -2,8 +2,8 @@ const Turma = require('../models/turmasModel');
 // Criar um novo estudante
 exports.criarTurma = async (req, res) => {
   try {
-    const { nome, ano, semestre } = req.body;
-    const newTurma = new Turma({ nome, ano, semestre });
+    const { nome, disciplinas, alunos } = req.body;
+    const newTurma = new Turma({ nome, disciplinas, alunos });
     await newTurma.save();
     res.status(201).json({ message: 'Turma criada com sucesso', newTurma });
   } catch (err) {

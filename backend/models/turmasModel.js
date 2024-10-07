@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const TurmaSchema = new mongoose.Schema({
     nome: { type: String, required: true },
-    ano: { type: Number, required: true, unique: false },
-    semestre: { type: Number, required: true, unique: false }
+    disciplinas: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Disciplina'}],
+    alunos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Student'}],
   });
   
   module.exports = mongoose.model('Turma', TurmaSchema);

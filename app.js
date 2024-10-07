@@ -13,7 +13,7 @@ const connectDB = require('./backend/config/database')
 // Chamada das rotas do projeto
 const alunosRoutes = require('./backend/routes/alunosRoutes');
 const disciplinasRoutes = require('./backend/routes/disciplinasRoutes');
-const professorRoutes = require('./backend/routes/professorRoutes');
+const professoresRoutes = require('./backend/routes/professorRoutes');
 const coordenadorRoutes = require('./backend/routes/coordenadorRoutes');
 const conceitosRoutes = require('./backend/routes/conceitosRoutes');
 const comunicadosRoutes = require('./backend/routes/comunicadoRoutes');
@@ -32,7 +32,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Rotas de usuários
 app.use('/api', alunosRoutes);
-app.use('/api', professorRoutes);
+app.use('/professores', professoresRoutes);
 app.use('/api', disciplinasRoutes);
 app.use('/api', coordenadorRoutes);
 app.use('/api', conceitosRoutes);
