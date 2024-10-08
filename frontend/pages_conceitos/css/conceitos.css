@@ -5,24 +5,6 @@
     justify-content: center;
 }
 
-#data-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-p {
-    margin: 0 0 10px;
-}
-strong {
-    display: inline-block;
-    width: 100px;
-}
-
-h1 {
-    color: white;
-}
-
 img {
     width: 100px;
     margin: 5px;
@@ -30,48 +12,119 @@ img {
 
 h1 {
     text-align: center;
-    color: #333;
-  }
-
-  #data-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-  }
-
-  .card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 20px;
-    width: 250px;
-    text-align: center;
-    transition: transform 0.2s;
-  }
-
-  .card:hover {
-    transform: scale(1.05);
-  }
-
-  .card p {
-    margin: 10px 0;
-    color: #555;
-  }
-
-  .card button {
-    background-color: #ff5252;
-    border: none;
-    border-radius: 5px;
     color: white;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
+}
 
-  .card button:hover {
-    background-color: #ff1744;
-  }
+/* Estilos gerais para a tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden; /* Para bordas arredondadas */
+}
+
+/* Estilo para as células do cabeçalho */
+thead th {
+  background-color: #004080;
+  color: white;
+  padding: 12px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Estilo para as células do corpo da tabela */
+tbody td {
+  padding: 12px 15px;
+  color: #333;
+}
+
+/* Zebra striping (linhas alternadas com cor) */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Borda nas células da tabela */
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Efeito hover nas linhas da tabela */
+tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Estilização geral para os botões */
+button {
+  background-color: #3498db; /* Cor de fundo inicial */
+  color: white; /* Cor do texto */
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s; /* Animação suave */
+}
+
+/* Cor ao passar o mouse sobre o botão */
+button:hover {
+  background-color: #2285c7; /* Cor de fundo ao passar o mouse */
+}
+/* Alinhamento central das ações */
+td:last-child {
+  text-align: center;
+}
+
+/* Coluna de ações (botões) */
+td button {
+  margin: 5px;
+}
+
+/* Dropdown conteúdo como lista, inicialmente oculto e com animação */
+.dropdown-content {
+    display: block;
+    max-height: 0; /* Começa fechado */
+    overflow: hidden; /* Para ocultar conteúdo fora dos limites */
+    background-color: #0056b3;
+    padding: 0;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    padding-left: 20px;
+    transition: max-height 0.5s ease-out; /* Animação de descer */
+}
+
+.dropdown-content li {
+    margin-bottom: 10px;
+}
+
+.dropdown-content li a {
+    color: white;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dropdown-content li a:hover {
+    color: #cccccc;
+}
+
+/* Controla a altura máxima do dropdown para simular a animação */
+.show-dropdown {
+    max-height: 200px; /* Define uma altura suficiente para os itens */
+    padding: 10px;
+}
+.custom-button img {
+    height: auto;
+    max-height: 100%; 
+}

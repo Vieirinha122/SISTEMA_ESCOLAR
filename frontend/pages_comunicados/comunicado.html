@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela do Aluno</title>
     <link rel="stylesheet" href="./css/aluno_comunicados.css">
+    <!-- <link rel="stylesheet" href="../tela_professor/tela_professor.css"> -->
 </head>
 <body>
     <div class="container">
@@ -24,7 +25,13 @@
                 <button class="menu-button">Comunicados</button>
                 <button class="menu-button">Quadro de horários</button>
                 <button class="menu-button">Faltas</button>
-                <button class="menu-button">Conceitos</button>
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button">Conceitos</button>
+                    <ul class="dropdown-content">
+                        <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
+                        <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
+                    </ul>
+                </div>
                 <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
                     <img src="/frontend/imagens/logoGeekieOneBranco.png" alt="Geekie One">
                 </a>
@@ -53,5 +60,6 @@
         </div>
     </div>
     <script src="./scripts/aluno_comunicados.js"></script>
+    <script src="../tela_professor/tela_professor.js"></script>
 </body>
 </html>
