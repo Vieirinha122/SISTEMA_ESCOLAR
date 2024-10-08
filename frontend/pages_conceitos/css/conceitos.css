@@ -85,3 +85,46 @@ td:last-child {
 td button {
   margin: 5px;
 }
+
+/* Dropdown conteúdo como lista, inicialmente oculto e com animação */
+.dropdown-content {
+    display: block;
+    max-height: 0; /* Começa fechado */
+    overflow: hidden; /* Para ocultar conteúdo fora dos limites */
+    background-color: #0056b3;
+    padding: 0;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    padding-left: 20px;
+    transition: max-height 0.5s ease-out; /* Animação de descer */
+}
+
+.dropdown-content li {
+    margin-bottom: 10px;
+}
+
+.dropdown-content li a {
+    color: white;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dropdown-content li a:hover {
+    color: #cccccc;
+}
+
+/* Controla a altura máxima do dropdown para simular a animação */
+.show-dropdown {
+    max-height: 200px; /* Define uma altura suficiente para os itens */
+    padding: 10px;
+}
+.custom-button img {
+    height: auto;
+    max-height: 100%; 
+}
