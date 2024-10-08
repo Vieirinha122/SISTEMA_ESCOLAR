@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     if (cargo === 'aluno') {
         apiUrl = 'https://sistema-escolar-two.vercel.app/api/alunos';
     } else if (cargo === 'professor') {
-        apiUrl = 'https://sistema-escolar-two.vercel.app/professores/professores';
+        apiUrl = 'https://sistema-escolar-two.vercel.app/api/professores';
     } else if (cargo === 'coordenador') {
         apiUrl = 'https://sistema-escolar-two.vercel.app/api/coordenadores';
     }
