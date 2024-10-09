@@ -1,0 +1,21 @@
+{
+    "name": "Portal do Aluno - Mediotec",
+    "short_name": "Portal do Aluno - Mediotec",
+    "description": "Acesso ao portal de alunos, professores e coordenadores.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#004B8D",
+    "theme_color": "#004B8D",
+    "icons": [
+        {
+            "src": "/frontend/imagens/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/frontend/imagens/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
