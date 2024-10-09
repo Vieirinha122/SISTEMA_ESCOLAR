@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela do Coordenador</title>
-    <link rel="stylesheet" href="tela_coordenador.css">
+    <link rel="stylesheet" href="../tela_professor/tela_professor.css">
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <div class="header">Coordenador</div>
-            <img src="../imagens/Logo_usuario.png" alt="Avatar do Aluno" class="avatar">
-            <button class="custom-button" id="cadastrarUsuario">
-                Cadastrar Usuário
-            </button>
-            <div class="dropdown" id="dropdown">
-                <div class="dropdown-item" id="cadastrarAluno">Cadastrar Aluno</div>
-                <div class="dropdown-item" id="cadastrarProfessor">Cadastrar Professor</div>
+            <div class="header">
+                <p>Coordenador</p>
             </div>
-            <button class="menu-button">Conceitos</button>
-            <button class="menu-button">Avisos</button>
-            
-            <!-- Botão de Sair -->
-            <button class="sair-button">Sair</button>
+            <div class="profile">
+                <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
+                <div class="info">
+                    <h2 id="nome-coordenador">Nome do Coordenador</h2>
+                    <p id="id-coordenador"></p> 
+                </div>
+            </div>
+            <nav class="menu">
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <ul class="dropdown-content dropdown-content-comunicados">
+                        <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
+                        <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
+                    </ul>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <ul class="dropdown-content dropdown-content-conceitos">
+                        <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
+                        <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
+                    </ul>
+                </div>
+
+                <a href="../cadastro_geral/cadastro.html"><button class="menu-button dropdown-button-conceitos">Cadastros</button></a>
+                <a href="#"><button class="menu-button dropdown-button-conceitos">Registros</button></a>
+                
+                <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
+                    <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
+                </a>
+            </nav>
         </div>
         <div class="main-content">
-            <img src="../imagens/Senac_logo.png" alt="Logo do Senac" class="senac-logo show">
+            <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
         </div>
     </div>
-
-    <script src="tela_coordenador.js"></script>
+    <script src="../tela_professor/tela_professor.js"></script>
+    <script src="../tela_coordenador/tela_coordenador.js"></script>
 </body>
 </html>

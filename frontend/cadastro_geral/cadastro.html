@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuários</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="../tela_professor/tela_professor.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <p>Coordenador</p>
+            </div>
+            <div class="profile">
+                <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
+                <div class="info">
+                    <h2 id="nome-coordenador">Nome do Coordenador</h2>
+                    <p id="id-coordenador"></p> 
+                </div>
+            </div>
+            <nav class="menu">
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <ul class="dropdown-content dropdown-content-comunicados">
+                        <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
+                        <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
+                    </ul>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <ul class="dropdown-content dropdown-content-conceitos">
+                        <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
+                        <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
+                    </ul>
+                </div>
+
+                <a href="../cadastro_geral/cadastro.html"><button class="menu-button dropdown-button-conceitos">Cadastros</button></a>
+                <a href="#"><button class="menu-button dropdown-button-conceitos">Registros</button></a>
+                
+                <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
+                    <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
+                </a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div class="container-form">
+                <h1>Cadastrar Usuários</h1>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="openForm('aluno-form')">Cadastrar Aluno</button>
+                    <button class="tab-button" onclick="openForm('professor-form')">Cadastrar Professor</button>
+                    <button class="tab-button" onclick="openForm('coordenador-form')">Cadastrar Coordenador</button>
+                </div>
+        
+                <div id="aluno-form" class="form-container">
+                    <h2>Cadastro de Aluno</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="nome-aluno">Nome:</label>
+                            <input type="text" id="nome-aluno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="matricula-aluno">Matrícula:</label>
+                            <input type="text" id="matricula-aluno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-aluno">Email:</label>
+                            <input type="email" id="email-aluno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="turno-aluno">Turno:</label>
+                            <input type="text" id="turno-aluno" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha-aluno">Senha:</label>
+                            <input type="text" id="senha-aluno" required>
+                        </div>
+                        <select id="turma-aluno">
+                            <option value="">Selecione uma turma</option>
+                            <!-- As opções serão preenchidas dinamicamente -->
+                        </select>
+                        <button type="submit">Cadastrar Aluno</button>
+                    </form>
+                </div>
+        
+                <div id="professor-form" class="form-container" style="display:none;">
+                    <h2>Cadastro de Professor</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="nome-professor">Nome:</label>
+                            <input type="text" id="nome-professor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-professor">Email:</label>
+                            <input type="email" id="email-professor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha-professor">Senha:</label>
+                            <input type="password" id="senha-professor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="disciplina">Disciplina:</label>
+                            <input type="password" id="disciplina-professor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_professor">ID:</label>
+                            <input type="text" id="id_professor" required>
+                        </div>
+                        <button type="submit">Cadastrar Professor</button>
+                    </form>
+                </div>
+        
+                <div id="coordenador-form" class="form-container" style="display:none;">
+                    <h2>Cadastro de Coordenador</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="nome-coordenador">Nome:</label>
+                            <input type="text" id="nome_coordenador" name="nome-coordenador" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-coordenador">Email:</label>
+                            <input type="email" id="email-coordenador" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senha-coordenador">Senha:</label>
+                            <input type="password" id="senha-coordenador" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_coordenador">ID:</label>
+                            <input type="text" id="id_coordenador" required>
+                        </div>
+                        <button type="submit">Cadastrar Coordenador</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="cadastro.js"></script>
+    <script src="../tela_coordenador/tela_coordenador.js"></script>
+    <script src="../tela_professor/tela_professor.js"></script>
+</body>
+
+</html>
