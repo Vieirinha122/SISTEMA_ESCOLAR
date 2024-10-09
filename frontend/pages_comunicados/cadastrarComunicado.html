@@ -5,35 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunicados</title>
     <link rel="stylesheet" href="css/cadastrarComunicado.css">
+    <link rel="stylesheet" href="./css/aluno_comunicados.css">
+    <link rel="stylesheet" href="../tela_professor/tela_professor.css">
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
             <div class="header">
-                <p>Coordenação</p>
+                <p>Professor</p>
             </div>
-            
-            
             <div class="profile">
-                <img src="imagens/avatar.png" alt="Avatar Coordenação" class="avatar">
+                <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
                 <div class="info">
-                    <h2 id="nome-coordenacao">Coordenação</h2>
+                    <h2 id="nome-professor">Nome do Professor</h2>
+                    <p id="id-professor"></p> 
                 </div>
             </div>
-
             <nav class="menu">
-                <button class="menu-button">Comunicados</button>
-                <button class="menu-button">Quadro de horários</button>
-                <button class="menu-button">Faltas</button>
-                <button class="menu-button">Cadastros</button>
-                <button class="menu-button">Conceitos</button>
-                <button class="menu-button">Registros</button>
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <ul class="dropdown-content dropdown-content-comunicados">
+                        <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
+                        <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
+                    </ul>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <ul class="dropdown-content dropdown-content-conceitos">
+                        <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
+                        <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
+                    </ul>
+                </div>
+                
                 <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
-                    <img src="imagens/logoGeekieOneBranco.padding" alt="Geekie One">
+                    <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
                 </a>
             </nav>
-        </div>
-
+        </div>    
         <div class="main-content">
             <h1>Comunicados</h1>
             <div class="comunicados-form">
@@ -47,26 +56,8 @@
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="turma">Turma</label>
-                            <select id="turma" name="turma">
-                                <option value="">Selecione a turma</option>
-                                <option value="turma1">Turma 1</option>
-                                <option value="turma2">Turma 2</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
                             <label for="data">Data</label>
-                            <input type="text" id="data" name="data" placeholder="dd/mm/aaaa">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="professor">Professor</label>
-                            <select id="professor" name="professor">
-                                <option value="">Selecione o professor</option>
-                                <option value="prof1">Professor 1</option>
-                                <option value="prof2">Professor 2</option>
-                            </select>
+                            <input type="date" id="data" name="data">
                         </div>
                     </div>
                     
@@ -76,5 +67,7 @@
         </div>
     </div>
     <script src="js/cadastrarComunicado.js"></script>
+    <script src="./scripts/aluno_comunicados.js"></script>
+    <script src="../tela_professor/tela_professor.js"></script>
 </body>
 </html>

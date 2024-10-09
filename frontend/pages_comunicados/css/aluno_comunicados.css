@@ -58,7 +58,7 @@ body {
     display: block;
     width: 100%;
     padding: 15px;
-    margin: 10px 0;
+    margin: 10px;
     background-color: #fff;
     border: 1px solid #ccc;
     cursor: pointer;
@@ -96,11 +96,11 @@ body {
 }
 
 .main-content {
-    flex-grow: 1;
-    background-color: #004080;
-    color: white;
-    padding: 20px;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px 180px 20px;
 }
 
 h1 {
@@ -150,4 +150,95 @@ tr:hover {
 .logo-footer {
     max-width: 150px;
     height: auto;
+}
+
+/* Dropdown conteúdo como lista, inicialmente oculto e com animação */
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    max-height: 0; /* Começa fechado */
+    overflow: hidden; /* Para ocultar conteúdo fora dos limites */
+    background-color: #0056b3;
+    padding: 0;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 0 0 10px 10px;
+    list-style-type: none;
+    margin: 0;
+    text-align: center;
+    padding-left: 20px;
+    transition: max-height 0.5s ease-out; /* Animação de descer */
+}
+
+.dropdown-content li {
+    margin-bottom: 10px;
+}
+
+.dropdown-content li a {
+    color: white;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dropdown-content li a:hover {
+    color: #cccccc;
+}
+
+/* Controla a altura máxima do dropdown para simular a animação */
+.show-dropdown {
+    max-height: 200px; /* Define uma altura suficiente para os itens */
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: #004080;
+}
+
+.custom-button img {
+    height: auto;
+    max-height: 100%; 
+}
+
+/* Estilizações para os botões de editar e excluir */
+button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão Editar */
+.btn-editar {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    margin-bottom: 10px;
+}
+
+.btn-editar:hover {
+    background-color: #45a049; /* Verde mais escuro */
+}
+
+/* Botão Excluir */
+.btn-excluir {
+    background-color: #f44336; /* Vermelho */
+    color: white;
+}
+
+.btn-excluir:hover {
+    background-color: #da190b; /* Vermelho mais escuro */
 }

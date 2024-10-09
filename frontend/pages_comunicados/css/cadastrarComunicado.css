@@ -103,6 +103,7 @@ h1 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 50px);
 }
 
 .comunicados-form h2 {
@@ -119,7 +120,7 @@ h1 {
 }
 
 .comunicados-form input, .comunicados-form textarea, .comunicados-form select {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -128,7 +129,7 @@ h1 {
 
 .form-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .form-group {

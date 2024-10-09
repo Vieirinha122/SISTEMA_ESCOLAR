@@ -5,16 +5,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const customButton = document.querySelector('.custom-button');
     const senacLogo = document.querySelector('.senac-logo');
 
-    document.querySelector('.dropdown-button').addEventListener('click', function() {
-        var dropdownContent = document.querySelector('.dropdown-content');
-        
-        // Alterna entre adicionar e remover a classe que controla a exibição do dropdown
-        if (dropdownContent.classList.contains('show-dropdown')) {
-            dropdownContent.classList.remove('show-dropdown');
-        } else {
-            dropdownContent.classList.add('show-dropdown');
-        }
-    });
+   // Dropdown para Conceitos
+document.querySelector('.dropdown-button-conceitos').addEventListener('click', function() {
+    var dropdownContent = document.querySelector('.dropdown-content-conceitos');
+    
+    // Alterna a visibilidade do dropdown de conceitos
+    if (dropdownContent.classList.contains('show-dropdown')) {
+        dropdownContent.classList.remove('show-dropdown');
+    } else {
+        dropdownContent.classList.add('show-dropdown');
+    }
+});
+
+// Dropdown para Comunicados
+document.querySelector('.dropdown-button-comunicados').addEventListener('click', function() {
+    var dropdownContent = document.querySelector('.dropdown-content-comunicados');
+    
+    // Alterna a visibilidade do dropdown de comunicados
+    if (dropdownContent.classList.contains('show-dropdown')) {
+        dropdownContent.classList.remove('show-dropdown');
+    } else {
+        dropdownContent.classList.add('show-dropdown');
+    }
+});
+
 
     // Obtém as informações do professor do localStorage
     const professorInfo = JSON.parse(localStorage.getItem('professorInfo'));

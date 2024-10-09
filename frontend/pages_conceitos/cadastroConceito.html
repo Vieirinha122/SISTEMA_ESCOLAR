@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../tela_professor/tela_professor.css">
     <link rel="stylesheet" href="../pages_conceitos/css/cadastrar_conceitos.css">
 </head>
+
 <body>
     <div class="container">
         <div class="sidebar">
@@ -17,20 +19,26 @@
                 <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
                 <div class="info">
                     <h2 id="nome-professor">Nome do Professor</h2>
-                    <p id="id-professor"></p> 
+                    <p id="id-professor"></p>
                 </div>
             </div>
             <nav class="menu">
-                <button class="menu-button">Avisos</button>
-                <button class="menu-button">Quadro de horários</button>
-                <button class="menu-button">Faltas</button>
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button">Conceitos</button>
-                    <ul class="dropdown-content">
+                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <ul class="dropdown-content dropdown-content-comunicados">
+                        <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
+                        <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <ul class="dropdown-content dropdown-content-conceitos">
                         <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
                         <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
                     </ul>
                 </div>
+
                 <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
                     <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
                 </a>
@@ -39,24 +47,30 @@
         <div class="main-content">
             <h1>Cadastro de Conceito</h1>
             <div id="form-container">
-                <form id="conceito-form">
+                <form id="cadastro-conceito"> <!-- Alterado para o ID correto -->
                     <label for="conceito">Conceito:</label>
                     <input type="number" id="conceito" name="conceito" required>
-            
+
                     <label for="aluno">Aluno:</label>
                     <select id="aluno" name="aluno" required></select>
-            
+
                     <label for="disciplina">Disciplina:</label>
                     <select id="disciplina" name="disciplina" required></select>
-            
+
                     <button type="submit">Cadastrar Conceito</button>
+                    <div id="mensagem-sucesso" style="display: none;" class="mensagem-sucesso">
+                        Conceito cadastrado com sucesso!
+                    </div>
                 </form>
-                <div id="message" class="message"></div> <!-- Mensagem de feedback -->
+                <div id="mensagem-error" style="display: none;" class="mensagem-error"></div> <!-- Mensagem de erro -->
             </div>
-    <div>
-        <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
+            <div>
+                <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
+            </div>
+            <script src="../tela_professor/tela_professor.js"></script>
+            <script src="./scripts/cadastrar_conceitos.js"></script>
+        </div>
     </div>
-    <script src="../tela_professor/tela_professor.js"></script>
-    <script src="./scripts/cadastrar_conceitos.js"></script>
 </body>
+
 </html>

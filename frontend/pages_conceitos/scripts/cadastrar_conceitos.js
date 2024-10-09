@@ -50,26 +50,33 @@ async function cadastrarConceito(event) {
         });
 
         const resultado = await resposta.json();
-        const messageDiv = document.getElementById('message');
+        const messageDiv = document.getElementById('mensagem-sucesso'); // Atualizado para o ID correto
+        const errorDiv = document.getElementById('mensagem-error'); // Mensagem de erro
+
+        // Limpa mensagens anteriores
+        messageDiv.style.display = 'none';
+        errorDiv.style.display = 'none';
 
         if (resposta.ok) {
             messageDiv.textContent = 'Conceito cadastrado com sucesso!';
-            messageDiv.className = 'message success'; // Aplica estilo de sucesso
+            messageDiv.className = 'mensagem-sucesso'; // Aplica estilo de sucesso
             messageDiv.style.display = 'block'; // Exibe a mensagem
         } else {
-            messageDiv.textContent = `Erro: ${resultado.error}`;
-            messageDiv.className = 'message error'; // Aplica estilo de erro
-            messageDiv.style.display = 'block'; // Exibe a mensagem
+            errorDiv.textContent = `Erro: ${resultado.error}`;
+            errorDiv.className = 'mensagem-error'; // Aplica estilo de erro
+            errorDiv.style.display = 'block'; // Exibe a mensagem
         }
     } catch (error) {
         console.error('Erro ao cadastrar conceito:', error);
-        document.getElementById('message').textContent = 'Erro ao cadastrar conceito';
-        document.getElementById('message').style.color = 'red';
+        const errorDiv = document.getElementById('mensagem-error');
+        errorDiv.textContent = 'Erro ao cadastrar conceito';
+        errorDiv.className = 'mensagem-error'; // Aplica estilo de erro
+        errorDiv.style.display = 'block'; // Exibe a mensagem
     }
 }
 
 // Adicionar evento ao formulário
-document.getElementById('conceito-form').addEventListener('submit', cadastrarConceito);
+document.getElementById('cadastro-conceito').addEventListener('submit', cadastrarConceito);
 
 // Carregar os dados dos alunos e disciplinas ao carregar a página
 window.onload = carregarDados;
