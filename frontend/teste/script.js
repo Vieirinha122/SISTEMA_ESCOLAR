@@ -1,3 +1,17 @@
+// Função para exibir alerta ao enviar o formulário de recuperação de senha
+document.getElementById("resetPasswordForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Impede o envio do formulário
+
+    const email = document.getElementById("email").value; // Pega o valor do campo de email
+
+    if (email) {
+        alert(`Instruções foram enviadas para o email: ${email}`);
+    } else {
+        alert("Por favor, insira um email válido.");
+    }
+});
+
+// Função para alternar entre campos de matrícula e email dependendo do cargo selecionado
 document.getElementById('cargo').addEventListener('change', function () {
     const cargo = this.value;
     const matriculaContainer = document.getElementById('matriculaContainer');
@@ -12,6 +26,7 @@ document.getElementById('cargo').addEventListener('change', function () {
     }
 });
 
+// Função para login baseado no cargo
 document.getElementById('loginForm').addEventListener('submit', function (event) {
     event.preventDefault();
     
@@ -32,6 +47,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
+            console.log(data); // Verifique a estrutura do dado retornado
             const user = data.find(user => user.matricula === identifier || user.email === identifier);
             if (user && user.senha === password) {
                 alert('Login bem-sucedido!');
@@ -65,6 +81,8 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
                     window.location.href = '/frontend/tela_coordenador/tela_coordenador.html';
                 }
             } else {
+                console.log('Usuário ou senha incorretos.'); // Log para debug
+                alert('Usuário ou senha incorretos.');
                 errorMessage.textContent = 'Usuário ou senha incorretos.';
                 errorMessage.classList.remove('hidden');
             }
