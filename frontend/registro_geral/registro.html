@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Usuários</title>
+    <link rel="stylesheet" href="registro.css">
+    <link rel="stylesheet" href="../tela_professor/tela_professor.css">
+    <link rel="stylesheet" href="..//cadastro_geral/cadastro.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <p>Coordenador</p>
+            </div>
+            <div class="profile">
+                <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
+                <div class="info">
+                    <h2 id="nome-coordenador">Nome do Coordenador</h2>
+                    <p id="id-coordenador"></p> 
+                </div>
+            </div>
+            <nav class="menu">
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <ul class="dropdown-content dropdown-content-comunicados">
+                        <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
+                        <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
+                    </ul>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <ul class="dropdown-content dropdown-content-conceitos">
+                        <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
+                        <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
+                    </ul>
+                </div>
+
+                <a href="../cadastro_geral/cadastro.html"><button class="menu-button dropdown-button-conceitos">Cadastros</button></a>
+                <a href="../registro_geral/registro.html"><button class="menu-button dropdown-button-conceitos">Registros</button></a>
+                
+                <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
+                    <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
+                </a>
+            </nav>
+        </div>
+        
+        <div class="main-content">
+            <div class="container-form">
+                <h1>Listar Usuários</h1>
+                <div class="tabs">
+                    <button class="tab-button active" onclick="openTable('aluno-table')">Listar Alunos</button>
+                    <button class="tab-button" onclick="openTable('professor-table')">Listar Professores</button>
+                    <button class="tab-button" onclick="openTable('coordenador-table')">Listar Coordenadores</button>
+                </div>
+        
+                <!-- Tabela para Alunos -->
+                <div id="aluno-table" class="table-container">
+                    <h2>Lista de Alunos</h2>
+                    <table id="table-alunos">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Matrícula</th>
+                                <th>Email</th>
+                                <th>Turno</th>
+                                <th>Ações</th> <!-- Nova coluna para os botões -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- As linhas da tabela serão preenchidas dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+        
+                <!-- Tabela para Professores -->
+                <div id="professor-table" class="table-container" style="display:none;">
+                    <h2>Lista de Professores</h2>
+                    <table id="table-professores">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Disciplina</th>
+                                <th>ID</th>
+                                <th>Ações</th> <!-- Nova coluna para os botões -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- As linhas da tabela serão preenchidas dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+        
+                <!-- Tabela para Coordenadores -->
+                <div id="coordenador-table" class="table-container" style="display:none;">
+                    <h2>Lista de Coordenadores</h2>
+                    <table id="table-coordenadores">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>ID</th>
+                                <th>Ações</th> <!-- Nova coluna para os botões -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- As linhas da tabela serão preenchidas dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="registro.js"></script>
+    <script src="../tela_coordenador/tela_coordenador.js"></script>
+    <script src="../tela_professor/tela_professor.js"></script>
+
+</body>
+
+</html>

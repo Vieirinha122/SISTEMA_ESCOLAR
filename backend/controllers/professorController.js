@@ -1,4 +1,6 @@
 const Professor = require('../models/professorModel'); // Importação do modelo Professor
+const Disciplina = require('../models/disciplinasModel'); // Importação do modelo Professor
+
 
 exports.registerProfessor = async (req, res) => {
   try {
@@ -14,11 +16,18 @@ exports.registerProfessor = async (req, res) => {
 // Listar todos os usuários
 exports.getProfessor = async (req, res) => {
   try {
-    const professores = await Professor.find();
-    res.status(200).json(professores);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
+    // Popula a disciplina associada
+    const professores = await Professor.find().populate('disciplina'); 
+    const resultado = professores.map(professor => ({
+        nome: professor.nome,
+        email: professor.email,
+        disciplina: professor.disciplinas ? professor.disciplinas.nome : 'Sem Disciplina', // Verifica se disciplina existe
+        id: professor.id_professor
+    }));
+    res.json(resultado);
+} catch (error) {
+    res.status(500).json({ message: 'Erro ao buscar professores', error });
+}
 };
 
 // Buscar usuário por ID

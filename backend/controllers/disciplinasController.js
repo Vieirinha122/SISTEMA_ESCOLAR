@@ -3,7 +3,7 @@ const Disciplina = require('../models/disciplinasModel');
 // Criar um novo estudante
 exports.criarDisciplinas = async (req, res) => {
   try {
-    const { nome, descricao} = req.body;
+    const { nome, descricao, } = req.body;
     const newDisciplina = new Disciplina({ nome, descricao});
     await newDisciplina.save();
     res.status(201).json({ message: 'Disciplina criada com sucesso', newDisciplina });
@@ -15,7 +15,7 @@ exports.criarDisciplinas = async (req, res) => {
 // Listar todos os estudantes
 exports.getDisciplinas = async (req, res) => {
   try {
-    const disciplinas = await Disciplina.find({}, 'nome'); // Busca apenas o campo 'nome'
+    const disciplinas = await Disciplina.find({},); // Busca apenas o campo 'nome'
     res.json(disciplinas);
 } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar disciplinas' });
