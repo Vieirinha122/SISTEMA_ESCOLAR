@@ -1,0 +1,72 @@
+/* Estilização geral da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+/* Estilo para o cabeçalho da tabela */
+th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    text-transform: uppercase;
+}
+
+/* Estilo para as células de dados */
+td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+/* Alternância de cores para as linhas */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Efeito de hover nas linhas */
+tr:hover {
+    background-color: #e2e2e2;
+}
+
+/* Estilo para a primeira coluna (ID, por exemplo) */
+td:first-child {
+    font-weight: bold;
+}
+
+/* Ajuste de largura para a tabela */
+table {
+    table-layout: auto;
+}
+
+/* Colocar as ações (editar e excluir) ao centro */
+.action-buttons {
+    text-align: center;
+}
+
+button {
+    padding: 8px 12px;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+}
+
+button.delete {
+    background-color: #f44336;
+}
+
+button.edit:hover {
+    background-color: #45a049;
+}
+
+button.delete:hover {
+    background-color: #d32f2f;
+}
