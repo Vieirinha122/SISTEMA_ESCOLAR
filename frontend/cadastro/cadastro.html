@@ -1,40 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="cadastro.css"> 
+    <title>Cadastrar Aluno</title>
+    <link rel="stylesheet" href="../tela_professor/tela_professor.css">
+    <link rel="stylesheet" href="../pages_conceitos/css/conceitos.css">
 </head>
 <body>
     <div class="container">
-        <img src="../imagens/Senac_mediotec.png" alt="Senac Mediotec" class="logo"> 
-        <form id="registerForm" onsubmit="registerUser(event)">
-            <label for="matricula">Matrícula:</label>
-            <input type="text" id="matricula" name="matricula" required><br><br>
-
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required><br><br>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required><br><br>
-
-            <label for="turma">Turma:</label>
-            <input type="text" id="turma" name="turma" required><br><br>
-
-            <label for="turno">Turno:</label>
-            <select id="turno" name="turno" required>
-                <option value="">Selecione o turno</option>
-                <option value="manha">Manhã</option>
-                <option value="tarde">Tarde</option>
-            </select><br><br>
-
-            <button type="submit">Cadastrar</button>
-        </form>
+        <div class="sidebar">
+            <div class="header">
+                <p>Professor</p>
+            </div>
+            <div class="profile">
+                <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
+                <div class="info">
+                    <h2 id="nome-professor">Nome do Professor</h2>
+                    <p id="id-professor"></p> 
+                </div>
+            </div>
+            <nav class="menu">
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <ul class="dropdown-content dropdown-content-comunicados">
+                        <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
+                        <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
+                    </ul>
+                </div>
+                
+                <div class="dropdown">
+                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <ul class="dropdown-content dropdown-content-conceitos">
+                        <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
+                        <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
+                    </ul>
+                </div>
+                
+                <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
+                    <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
+                </a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <h1>Cadastro de Aluno</h1>
+            <div class="container">
+              
+            </div>
+        <div>
+        <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
     </div>
-    <script src="cadastro.js" defer></script>
+    <script src="../tela_professor/tela_professor.js"></script>
+    <script src="../pages_conceitos/scripts/conceitos.js"></script>
 </body>
 </html>

@@ -54,15 +54,22 @@ exports.updateConceito = async (req, res) => {
 }
 };
 
-// Deletar um estudante
+// Deletar um conceito
 exports.deleteConceito = async (req, res) => {
   try {
-    const conceito = await Conceito.findById(req.params.id);
-    if (!conceito) return res.status(404).json({ message: 'Conceito não encontrado' });
+       const { id } = req.params;
+       console.log('ID recebido para exclusão:', id); // Log para verificar o ID
 
-    await conceito.remove();
-    res.json({ message: 'Conceito excluído com sucesso' });
-} catch (err) {
-    res.status(500).json({ message: err.message });
-}
+       const conceito = await Conceito.findByIdAndDelete(id);
+       console.log('Conceito encontrado:', conceito); // Log do conceito encontrado
+
+       if (!conceito) {
+           return res.status(404).json({ message: 'Conceito não encontrado' });
+       }
+
+       res.status(200).json({ message: 'Conceito excluído com sucesso' });
+   } catch (error) {
+       console.error('Erro ao excluir conceito:', error); // Log do erro
+       res.status(500).json({ message: 'Erro ao excluir conceito', error });
+   }
 };

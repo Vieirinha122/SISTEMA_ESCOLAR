@@ -35,25 +35,15 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-.message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
+
+.mensagem-sucesso {
+    background-color: #d4edda; /* Cor de fundo */
     text-align: center;
-    display: none; /* Escondida até que seja necessário exibir uma mensagem */
-}
-
-.message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    color: #155724; /* Cor do texto */
+    padding: 10px;
+    border: 1px solid #c3e6cb; /* Borda */
+    border-radius: 5px;
+    margin-top: 15px; /* Espaçamento acima */
 }
 
 
