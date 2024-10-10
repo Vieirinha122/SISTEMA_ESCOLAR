@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="sidebar">
+        <nav class="sidebar">
             <div class="header">
                 <p>Aluno</p>
             </div>
@@ -22,20 +22,25 @@
                 </div>
             </div>
             <nav class="menu">
-                <button class="menu-button">Avisos</button>
-                <button class="menu-button">Quadro de horários</button>
-                <button class="menu-button">Faltas</button>
+                <button class="menu-button">Comunicados</button>     
                 <button class="menu-button">Conceitos</button>
-                <button class="menu-button">Pagamentos</button>
+                
                 <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
                     <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
                 </a>
             </nav>
-        </div>
+        </nav>
+
         <div class="main-content">
             <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
         </div>
+
+        <!-- Três tracinhos para abrir o menu (somente mobile) -->
+        <div class="menu-toggle">
+            <span>&#9776;</span>
+        </div>
     </div>
+
     <script src="tela_aluno.js"></script>
 </body>
 </html>
