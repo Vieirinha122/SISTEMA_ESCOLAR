@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="css/cadastrarComunicado.css">
     <link rel="stylesheet" href="./css/aluno_comunicados.css">
     <link rel="stylesheet" href="../tela_professor/tela_professor.css">
+    <!-- Link para Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        /* Adicionando alinhamento à direita para os ícones nos botões */
+        .menu-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .menu-button i {
+            margin-left: auto;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -23,7 +40,10 @@
             </div>
             <nav class="menu">
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <!-- Ícone de triângulo de aviso na extremidade direita do botão -->
+                    <button class="menu-button dropdown-button-comunicados">
+                        Comunicados <i class="bi bi-exclamation-triangle-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-comunicados">
                         <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
                         <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
@@ -31,7 +51,10 @@
                 </div>
                 
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <!-- Ícone de chapéu de formatura na extremidade direita do botão -->
+                    <button class="menu-button dropdown-button-conceitos">
+                        Conceitos <i class="bi bi-mortarboard-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-conceitos">
                         <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
                         <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>

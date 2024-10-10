@@ -7,7 +7,23 @@
     <title>Cadastrar Usuários</title>
     <link rel="stylesheet" href="cadastro.css">
     <link rel="stylesheet" href="../tela_professor/tela_professor.css">
+    <!-- Link para Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        /* Adicionando estilo aos ícones nos botões do menu */
+        .menu-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+        }
 
+        .menu-button i {
+            margin-left: auto;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,32 +33,44 @@
                 <p>Coordenador</p>
             </div>
             <div class="profile">
-                <img src="../imagens/Logo_usuario.png" alt="Avatar do Professor" class="avatar">
+                <img src="../imagens/Logo_usuario.png" alt="Avatar do Coordenador" class="avatar">
                 <div class="info">
                     <h2 id="nome-coordenador">Nome do Coordenador</h2>
-                    <p id="id-coordenador"></p> 
+                    <p id="id-coordenador"></p>
                 </div>
             </div>
             <nav class="menu">
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <button class="menu-button dropdown-button-comunicados">
+                        Comunicados <i class="bi bi-exclamation-triangle-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-comunicados">
                         <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
                         <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <button class="menu-button dropdown-button-conceitos">
+                        Conceitos <i class="bi bi-mortarboard-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-conceitos">
                         <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
                         <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
                     </ul>
                 </div>
 
-                <a href="../cadastro_geral/cadastro.html"><button class="menu-button dropdown-button-conceitos">Cadastros</button></a>
-                <a href="#"><button class="menu-button dropdown-button-conceitos">Registros</button></a>
-                
+                <a href="../cadastro_geral/cadastro.html">
+                    <button class="menu-button dropdown-button-cadastros">
+                        Cadastros <i class="bi bi-person-fill-add"></i>
+                    </button>
+                </a>
+                <a href="#">
+                    <button class="menu-button dropdown-button-registros">
+                        Registros <i class="bi bi-folder-fill"></i>
+                    </button>
+                </a>
+
                 <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
                     <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
                 </a>
@@ -56,7 +84,7 @@
                     <button class="tab-button" onclick="openForm('professor-form')">Cadastrar Professor</button>
                     <button class="tab-button" onclick="openForm('coordenador-form')">Cadastrar Coordenador</button>
                 </div>
-        
+
                 <div id="aluno-form" class="form-container">
                     <h2>Cadastro de Aluno</h2>
                     <form>
@@ -87,7 +115,7 @@
                         <button type="submit">Cadastrar Aluno</button>
                     </form>
                 </div>
-        
+
                 <div id="professor-form" class="form-container" style="display:none;">
                     <h2>Cadastro de Professor</h2>
                     <form>
@@ -114,7 +142,7 @@
                         <button type="submit">Cadastrar Professor</button>
                     </form>
                 </div>
-        
+
                 <div id="coordenador-form" class="form-container" style="display:none;">
                     <h2>Cadastro de Coordenador</h2>
                     <form>

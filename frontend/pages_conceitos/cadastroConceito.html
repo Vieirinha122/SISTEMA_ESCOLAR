@@ -4,9 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de cadastrar conceitos</title>
+    <title>Tela de Cadastrar Conceitos</title>
     <link rel="stylesheet" href="../tela_professor/tela_professor.css">
     <link rel="stylesheet" href="../pages_conceitos/css/cadastrar_conceitos.css">
+    <!-- Link para Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        /* Adicionando estilo aos ícones nos botões do menu */
+        .menu-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .menu-button i {
+            margin-left: auto;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,7 +41,9 @@
             </div>
             <nav class="menu">
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <button class="menu-button dropdown-button-comunicados">
+                        Comunicados <i class="bi bi-exclamation-triangle-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-comunicados">
                         <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
                         <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
@@ -32,7 +51,9 @@
                 </div>
 
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <button class="menu-button dropdown-button-conceitos">
+                        Conceitos <i class="bi bi-mortarboard-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-conceitos">
                         <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
                         <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
@@ -47,7 +68,7 @@
         <div class="main-content">
             <h1>Cadastro de Conceito</h1>
             <div id="form-container">
-                <form id="cadastro-conceito"> <!-- Alterado para o ID correto -->
+                <form id="cadastro-conceito">
                     <label for="conceito">Conceito:</label>
                     <input type="number" id="conceito" name="conceito" required>
 

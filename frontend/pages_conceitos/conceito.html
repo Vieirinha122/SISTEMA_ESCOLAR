@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar conceitos</title>
+    <title>Visualizar Conceitos</title>
     <link rel="stylesheet" href="../tela_professor/tela_professor.css">
     <link rel="stylesheet" href="../pages_conceitos/css/conceitos.css">
+    <!-- Link para Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        /* Adicionando um pouco de estilo aos ícones na tabela */
+        .action-icons {
+            display: flex;
+            gap: 10px; /* Espaçamento entre os ícones */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -22,7 +31,9 @@
             </div>
             <nav class="menu">
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <button class="menu-button dropdown-button-comunicados">
+                        Comunicados <i class="bi bi-exclamation-triangle-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-comunicados">
                         <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
                         <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
@@ -30,7 +41,9 @@
                 </div>
                 
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <button class="menu-button dropdown-button-conceitos">
+                        Conceitos <i class="bi bi-mortarboard-fill"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-conceitos">
                         <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
                         <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
@@ -56,12 +69,25 @@
                     </thead>
                     <tbody id="conceitos-table-body">
                         <!-- Linhas de conceitos serão inseridas aqui -->
+                        <!-- Exemplo de linha -->
+                        <tr>
+                            <td>João Silva</td>
+                            <td>Matemática</td>
+                            <td>Bom</td>
+                            <td class="action-icons">
+                                <a href="#" title="Editar"><i class="bi bi-pencil-fill"></i></a>
+                                <a href="#" title="Excluir"><i class="bi bi-trash-fill"></i></a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
+        </div>
         <div>
-        <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
+            <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
+        </div>
     </div>
+    
     <script src="../tela_professor/tela_professor.js"></script>
     <script src="../pages_conceitos/scripts/conceitos.js"></script>
 </body>
