@@ -49,9 +49,10 @@ async function listarProfessores() {
         professores.forEach(professor => {
             // Mapeia as disciplinas associadas ao professor
             const nomeDisciplinas = professor.disciplinas.map(disciplinaId => {
+                // Busca a disciplina correspondente pelo ID
                 const disciplina = disciplinas.find(d => d._id === disciplinaId);
                 return disciplina ? disciplina.nome : 'Sem Disciplina'; // Se não encontrar, exibe 'Sem Disciplina'
-            }).join(', '); // Junte as disciplinas em uma string
+            }).join(', '); // Junta as disciplinas em uma string
 
             // Cria uma nova linha na tabela
             const row = document.createElement('tr');

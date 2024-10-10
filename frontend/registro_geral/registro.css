@@ -12,7 +12,7 @@ table {
 
 /* Estilo para o cabeçalho da tabela */
 th {
-    background-color: #4CAF50;
+    background-color: #0C407A;
     color: white;
     padding: 12px;
     text-transform: uppercase;
@@ -46,6 +46,9 @@ table {
 
 /* Colocar as ações (editar e excluir) ao centro */
 .action-buttons {
+    gap: 10px;
+    display:flex;
+    flex-direction: row;
     text-align: center;
 }
 
@@ -54,7 +57,7 @@ button {
     margin-right: 8px;
     border: none;
     cursor: pointer;
-    background-color: #4CAF50;
+    background-color: #0C407A;
     color: white;
     border-radius: 4px;
 }
@@ -64,7 +67,7 @@ button.delete {
 }
 
 button.edit:hover {
-    background-color: #45a049;
+    background-color: #0C407A;
 }
 
 button.delete:hover {
