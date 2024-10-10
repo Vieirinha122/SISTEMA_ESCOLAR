@@ -1,19 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
+html, body {
+    margin: 0; /* Remove a margem padrão */
+    padding: 0px; /* Remove o padding padrão */
+    height: 100%; /* Garante que o body ocupe toda a altura */
+    overflow-x: hidden; /* Esconde qualquer overflow horizontal */
+}
+
+* {
+    box-sizing: border-box; /* Inclui padding e bordas nas dimensões */
+}
+
 body {
-    margin: 0;
     font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .container {
     display: flex;
     height: 100vh;
+    width: 100%; /* Garante que a largura do container seja 100% */
 }
 
 .sidebar {
     width: 300px;
     background-color: #f0f0f0;
-    padding: 20px;
+    padding: 20px; /* Padding padrão */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -88,7 +99,7 @@ body {
 .main-content {
     flex-grow: 1;
     background-color: #004080;
-    padding: 40px;
+    padding: 40px; /* Padding padrão */
     color: #fff;
 }
 
@@ -119,7 +130,9 @@ h1 {
     color: #004080;
 }
 
-.comunicados-form input, .comunicados-form textarea, .comunicados-form select {
+.comunicados-form input,
+.comunicados-form textarea,
+.comunicados-form select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px;
@@ -151,3 +164,64 @@ h1 {
 .btn-publicar:hover {
     background-color: #005bbb;
 }
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    .menu-toggle span {
+        font-size: 30px;
+    }
+
+    /* Sidebar escondida no mobile até que o menu seja aberto */
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 100;
+        background-color: #f0f0f0;
+    }
+
+    /* Remove o padding para dispositivos móveis */
+    .main-content {
+        padding: 0; /* Removendo o padding no mobile */
+        width: 100%; /* Garantindo que a largura seja 100% */
+        margin: 0; /* Removendo margin para evitar espaços brancos */
+    }
+
+    .comunicados-form {
+        width: calc(100% - 30px); /* Ajustando a largura do formulário */
+        margin: 0 auto; /* Centralizando o formulário */
+    }
+
+    /* Remove o padding e margin do container */
+    .container {
+        padding: 0; /* Removendo padding do container */
+        margin: 0; /* Removendo margin do container */
+    }
+}
+
+/* Sidebar sempre visível no PC */
+@media (min-width: 769px) {
+    .sidebar {
+        display: block;
+    }
+}
+
