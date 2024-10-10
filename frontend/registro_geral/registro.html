@@ -7,7 +7,8 @@
     <title>Listar Usuários</title>
     <link rel="stylesheet" href="registro.css">
     <link rel="stylesheet" href="../tela_professor/tela_professor.css">
-    <link rel="stylesheet" href="..//cadastro_geral/cadastro.css">
+    <link rel="stylesheet" href="../cadastro_geral/cadastro.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +26,10 @@
             </div>
             <nav class="menu">
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <button class="menu-button dropdown-button-comunicados">
+                        Comunicados
+                        <i class="bi bi-exclamation-triangle-fill" style="float: right;"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-comunicados">
                         <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
                         <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
@@ -33,15 +37,28 @@
                 </div>
                 
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <button class="menu-button dropdown-button-conceitos">
+                        Conceitos
+                        <i class="bi bi-mortarboard-fill" style="float: right;"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-conceitos">
                         <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
                         <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
                     </ul>
                 </div>
 
-                <a href="../cadastro_geral/cadastro.html"><button class="menu-button dropdown-button-conceitos">Cadastros</button></a>
-                <a href="../registro_geral/registro.html"><button class="menu-button dropdown-button-conceitos">Registros</button></a>
+                <a href="../cadastro_geral/cadastro.html">
+                    <button class="menu-button dropdown-button-cadastros">
+                        Cadastros
+                        <i class="bi bi-person-plus-fill" style="float: right;"></i>
+                    </button>
+                </a>
+                <a href="../registro_geral/registro.html">
+                    <button class="menu-button dropdown-button-registros">
+                        Registros
+                        <i class="bi bi-folder-fill" style="float: right;"></i>
+                    </button>
+                </a>
                 
                 <a href="https://one.geekie.com.br" target="_blank" class="custom-button">
                     <img src="../imagens/logoGeekieOneBranco.png" alt="Geekie One">
@@ -119,7 +136,6 @@
     <script src="registro.js"></script>
     <script src="../tela_coordenador/tela_coordenador.js"></script>
     <script src="../tela_professor/tela_professor.js"></script>
-
 </body>
 
 </html>
