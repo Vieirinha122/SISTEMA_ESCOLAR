@@ -85,3 +85,11 @@ function excluirComunicado(id) {
 
 // Chama a função para listar comunicados ao carregar a página
 window.onload = listarComunicados;
+
+const menuToggle = document.querySelector('.menu-toggle'); // Altere para a classe correta do seu botão
+const sidebar = document.querySelector('.sidebar'); // Altere para a classe correta da sua sidebar
+
+// Adiciona um listener de evento para o clique
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open'); // Adiciona ou remove a classe 'open'
+});
