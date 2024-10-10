@@ -3,11 +3,12 @@
 body {
     margin: 0;
     font-family: 'Montserrat', Arial, sans-serif;
+    padding: 0 10px; /* Adicionando espaçamento lateral ao corpo para telas pequenas */
 }
 
 .container {
     display: flex;
-    height: 100vh;
+    height: auto; /* Ajustando a altura para permitir o conteúdo expandir */
 }
 
 .sidebar {
@@ -58,7 +59,7 @@ body {
     display: block;
     width: 100%;
     padding: 15px;
-    margin: 10px;
+    margin: 10px 0; /* Removendo a margem lateral */
     background-color: #fff;
     border: 1px solid #ccc;
     cursor: pointer;
@@ -100,7 +101,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0px 20px 180px 20px;
+    padding: 0 20px 180px; /* Ajustando o padding para um melhor espaçamento */
+    flex-grow: 1; /* Permite que o conteúdo principal ocupe o espaço disponível */
 }
 
 h1 {
@@ -137,12 +139,12 @@ tr:hover {
     font-size: 18px;
     color: white;
 }
+
 .logo-container {
     position: fixed;
-    /* position: absolute; */
     bottom: 20px;
-    left: 60%;
-    transform: translateX(-50%);
+    left: 50%; /* Centralizando na horizontal */
+    transform: translateX(-50%); /* Centralizando a imagem */
     text-align: center;
     max-width: 100%;
 }
@@ -241,4 +243,63 @@ button {
 
 .btn-excluir:hover {
     background-color: #da190b; /* Vermelho mais escuro */
+}
+
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    .menu-toggle span {
+        font-size: 30px;
+    }
+
+    /* Sidebar escondida no mobile até que o menu seja aberto */
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 100;
+        background-color: #f0f0f0;
+    }
+
+    /* Ajustando o layout do conteúdo principal para dispositivos móveis */
+    .main-content {
+        padding: 20px; /* Adicionando padding nos dispositivos móveis */
+    }
+
+    .menu-button {
+        margin: 5px 0; /* Reduzindo a margem lateral nos botões do menu */
+    }
+}
+
+/* Sidebar sempre visível no PC */
+@media (min-width: 769px) {
+    .sidebar {
+        display: block;
+    }
+
+    .container {
+        height: 100vh; /* Altura fixa em telas grandes */
+    }
+
+    .main-content {
+        padding: 0 20px 180px; /* Mantendo o padding para telas grandes */
+    }
 }

@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    font-family: 'Montserrat', Arial, sans-serif; 
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .container {
@@ -15,7 +15,7 @@ body {
     background-color: #f0f0f0;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .header {
@@ -23,7 +23,7 @@ body {
     margin-bottom: 20px;
     font-size: 1.5em;
     font-weight: bold;
-    color: #004080; 
+    color: #004080;
 }
 
 .profile {
@@ -35,7 +35,7 @@ body {
 .avatar {
     width: 80px;
     height: 80px;
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
 .info {
@@ -46,7 +46,7 @@ body {
 .info h2 {
     font-size: 1.2em;
     margin: 0;
-    font-weight: 700; 
+    font-weight: 700;
 }
 
 .info p {
@@ -64,40 +64,40 @@ body {
     cursor: pointer;
     font-size: 1em;
     text-align: left;
-    color: #004080; 
-    font-family: 'Montserrat', Arial, sans-serif; 
-    font-weight: 700; 
-    opacity: 0; 
-    transform: translateY(-20px); 
-    transition: background-color 0.3s ease, color 0.3s ease; 
+    color: #004080;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .menu-button:hover {
     background-color: #e0e0e0;
-    color: #0070ff; 
+    color: #0070ff;
 }
 
 .custom-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, #004080, #0070ff); 
+    background: linear-gradient(to right, #004080, #0070ff);
     color: #fff;
     border: none;
     padding: 0;
     margin: 10px 0;
     cursor: pointer;
-    width: 100%; 
-    height: 50px; 
-    font-weight: 700; 
-    opacity: 0; 
-    transform: translateY(-20px); 
-    transition: background-color 0.3s ease, transform 0.3s ease; 
+    width: 100%;
+    height: 50px;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .custom-button img {
     height: auto;
-    max-height: 100%; 
+    max-height: 100%;
 }
 
 .main-content {
@@ -109,36 +109,35 @@ body {
 }
 
 .senac-logo {
-    transform: scale(0.1); 
-    opacity: 0; 
-    transition: transform 0.5s ease, opacity 0.5s ease; 
+    transform: scale(0.1);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
-
 
 @keyframes growAndShake {
     0% {
-        transform: scale(0.1); 
-        opacity: 0; 
+        transform: scale(0.1);
+        opacity: 0;
     }
     50% {
-        transform: scale(1); 
-        opacity: 1; 
+        transform: scale(1);
+        opacity: 1;
     }
     60% {
-        transform: scale(1.1); 
+        transform: scale(1.1);
     }
     70% {
-        transform: rotate(-5deg); 
+        transform: rotate(-5deg);
     }
     80% {
         transform: rotate(5deg);
     }
     90% {
-        transform: rotate(-2deg); 
+        transform: rotate(-2deg);
     }
     100% {
-        transform: rotate(0deg); 
-        opacity: 1; 
+        transform: rotate(0deg);
+        opacity: 1;
     }
 }
 
@@ -158,5 +157,48 @@ body {
 }
 
 .menu-button.show, .custom-button.show {
-    animation: fadeIn 0.5s forwards; 
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Estilos para os três tracinhos (somente mobile) */
+.menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        cursor: pointer;
+        font-size: 24px;
+    }
+
+    .menu-toggle span {
+        font-size: 30px;
+    }
+
+    /* Sidebar escondida no mobile até que o menu seja aberto */
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.open {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 100;
+        background-color: #f0f0f0;
+    }
+}
+
+/* Sidebar sempre visível no PC */
+@media (min-width: 769px) {
+    .sidebar {
+        display: block;
+    }
 }

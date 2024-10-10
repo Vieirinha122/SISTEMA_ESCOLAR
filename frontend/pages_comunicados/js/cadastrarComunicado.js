@@ -34,3 +34,10 @@ document.querySelector('form').addEventListener('submit', function(event) {
         alert('Erro ao enviar comunicado');
     });
 });
+const menuToggle = document.querySelector('.menu-toggle'); // Altere para a classe correta do seu botão
+const sidebar = document.querySelector('.sidebar'); // Altere para a classe correta da sua sidebar
+
+// Adiciona um listener de evento para o clique
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open'); // Adiciona ou remove a classe 'open'
+});

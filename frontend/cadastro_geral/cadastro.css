@@ -4,12 +4,17 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif; /* Adicionando uma fonte padrão */
+}
+
 .container-form {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     max-width: 600px;
     width: 100%;
+    margin: 20px auto; /* Centralizando o formulário */
     color: #0C407A;
 }
 
@@ -85,26 +90,24 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #093066;
 }
+
 /* Estilizando o select da turma */
 select#turma-aluno {
-    width: 100%;  /* Para garantir que o select ocupe toda a largura disponível */
-    padding: 10px;  /* Adicionando espaçamento interno para tornar o campo mais confortável de usar */
-    margin-bottom: 10px;  /* Adicionando uma margem superior para espaçamento entre os elementos */
-    border: 1px solid #ccc;  /* Cor de borda neutra */
-    border-radius: 5px;  /* Arredondamento das bordas para suavizar a aparência */
-    font-size: 16px;  /* Tamanho da fonte adequado */
-    background-color: #fff;  /* Cor de fundo branco para manter contraste */
-    color: #333;  /* Cor do texto */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Adicionando leve sombra para dar profundidade */
+    width: 100%;  
+    padding: 10px;  
+    margin-bottom: 10px;  
+    border: 1px solid #ccc;  
+    border-radius: 5px;  
+    font-size: 16px;  
+    background-color: #fff;  
+    color: #333;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
 }
 
 select#turma-aluno:focus {
-    outline: none;  /* Remove o contorno padrão ao focar no campo */
-    border-color: #007bff;  /* Muda a cor da borda ao focar para um azul, indicando interatividade */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);  /* Sombra azul ao focar */
+    outline: none;  
+    border-color: #007bff;  
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);  
 }
 
-/* Estilizando a opção de turma padrão (placeholder) */
 select#turma-aluno option[value=""] {
-    color: #888;  /* Cor cinza para a opção inicial 'Selecione uma turma' */
-}

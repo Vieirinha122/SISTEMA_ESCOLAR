@@ -160,3 +160,18 @@ document.querySelector('#professor-form form').addEventListener('submit', adicio
 document.querySelector('#coordenador-form form').addEventListener('submit', adicionarCoordenador);
 // Chame a função para carregar as turmas ao carregar a página ou quando necessário
 loadTurmas();
+// Lógica para abrir e fechar a sidebar
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('active');
+}
+
+// Seleciona os elementos do DOM
+const menuToggle = document.querySelector('.menu-toggle'); // Altere para a classe correta do seu botão
+const sidebar = document.querySelector('.sidebar'); // Altere para a classe correta da sua sidebar
+
+// Adiciona um listener de evento para o clique
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open'); // Adiciona ou remove a classe 'open'
+});
+
