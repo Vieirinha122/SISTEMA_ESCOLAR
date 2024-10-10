@@ -38,7 +38,7 @@ async function listarProfessores() {
         const professores = await responseProfessores.json();
         
         // Faz a requisição para obter as disciplinas
-        const responseDisciplinas = await fetch('https://sistema-escolar-two.vercel.app/api/disciplinas'); // Supondo que você tenha essa rota
+        const responseDisciplinas = await fetch('https://sistema-escolar-two.vercel.app/api/disciplinas');
         const disciplinas = await responseDisciplinas.json();
         
         // Seleciona o corpo da tabela
@@ -47,16 +47,18 @@ async function listarProfessores() {
 
         // Itera sobre os professores para preencher a tabela
         professores.forEach(professor => {
-            // Encontra a disciplina correspondente ao professor
-            const disciplinaEncontrada = disciplinas.find(disciplina => disciplina._id === professor.disciplina); // Supondo que professor.disciplina seja o ID da disciplina
-            const nomeDisciplina = disciplinaEncontrada ? disciplinaEncontrada.nome : 'Sem Disciplina'; // Se não encontrar, exibe 'Sem Disciplina'
+            // Mapeia as disciplinas associadas ao professor
+            const nomeDisciplinas = professor.disciplinas.map(disciplinaId => {
+                const disciplina = disciplinas.find(d => d._id === disciplinaId);
+                return disciplina ? disciplina.nome : 'Sem Disciplina'; // Se não encontrar, exibe 'Sem Disciplina'
+            }).join(', '); // Junte as disciplinas em uma string
 
             // Cria uma nova linha na tabela
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${professor.nome}</td>
                 <td>${professor.email}</td>
-                <td>${nomeDisciplina}</td>
+                <td>${nomeDisciplinas}</td>
                 <td>${professor.id_professor}</td>
                 <td>
                     <button onclick="editarUsuario('${professor._id}', 'professor')">Editar</button>

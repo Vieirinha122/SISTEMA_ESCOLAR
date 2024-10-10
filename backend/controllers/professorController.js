@@ -3,10 +3,12 @@ const Professor = require('../models/professorModel');
 // Criar um novo professor (Create)
 exports.createProfessor = async (req, res) => {
   try {
-    const { nome, email, disciplina } = req.body;
+    const { nome, email, id_professor, senha, disciplina } = req.body;
     const novoProfessor = new Professor({
       nome,
       email,
+      id_professor,
+      senha,
       disciplina
     });
 

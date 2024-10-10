@@ -98,7 +98,7 @@ function adicionarProfessor(event) {
         nome: nome,
         email: email,
         senha: senha,
-        disciplina: disciplina,
+        disciplinas: disciplina,
         id_professor: id_professor
     };
 
