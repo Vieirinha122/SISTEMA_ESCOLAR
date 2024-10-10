@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Conceito</title>
+    <link rel="stylesheet" href="cadastro_coordenador.css"> <!-- Link para o arquivo CSS separado -->
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Conceito</h2>
+
+        <div class="form-group">
+            <label for="turma">Turma:</label>
+            <select id="turma" class="form-control">
+                <option value="">Carregando turmas...</option>
+            </select>
+        </div>
+
+        <div id="alunos-container" style="display: none;">
+            <div class="form-group">
+                <label for="aluno">Alunos:</label>
+                <select id="aluno" class="form-control">
+                    <option value="">Selecione um aluno</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="disciplina">Disciplina:</label>
+                <select id="disciplina" class="form-control">
+                    <option value="">Selecione uma disciplina</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="conceito">Conceito:</label>
+                <input type="text" id="conceito" class="form-control" placeholder="Digite o conceito">
+            </div>
+
+            <button id="confirmar-btn" class="btn">Confirmar</button>
+        </div>
+
+        <div id="mensagem-erro" class="alert alert-danger" style="display: none;"></div>
+    </div>
+
+    <script src="cadastro_coordenador.js"></script> <!-- Link para o arquivo JavaScript -->
+</body>
+</html>
