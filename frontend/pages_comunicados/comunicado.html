@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/aluno_comunicados.css">
     <link rel="stylesheet" href="../tela_professor/tela_professor.css">
     <link rel="manifest" href="/manifest.json">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
     <div class="menu-toggle">
@@ -26,7 +27,10 @@
             </div>
             <nav class="menu">
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-comunicados">Comunicados</button>
+                    <button class="menu-button dropdown-button-comunicados">
+                        Comunicados
+                        <i class="bi bi-exclamation-triangle-fill" style="float: right;"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-comunicados">
                         <li><a href="../pages_comunicados/cadastrarComunicado.html">Cadastrar Comunicado</a></li>
                         <li><a href="../pages_comunicados/comunicado.html">Ver Comunicados</a></li>
@@ -34,7 +38,10 @@
                 </div>
                 
                 <div class="dropdown">
-                    <button class="menu-button dropdown-button-conceitos">Conceitos</button>
+                    <button class="menu-button dropdown-button-conceitos">
+                        Conceitos
+                        <i class="bi bi-mortarboard-fill" style="float: right;"></i>
+                    </button>
                     <ul class="dropdown-content dropdown-content-conceitos">
                         <li><a href="../pages_conceitos/cadastroConceito.html">Cadastrar Conceito</a></li>
                         <li><a href="../pages_conceitos/conceito.html">Ver Conceitos</a></li>
@@ -60,7 +67,6 @@
                 <tbody id="comunicados-body">
                     <!-- Os dados dos comunicados serão inseridos aqui -->
                 </tbody>
-                
             </table>
         </div>
         <div class="logo-container">
