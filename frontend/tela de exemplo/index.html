@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas Escolares</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tabela de Notas Escolares</h1>
+
+        <label for="professores">Selecione o Professor:</label>
+        <select id="professores"></select>
+
+        <label for="turmas">Selecione a Turma:</label>
+        <select id="turmas"></select>
+
+        <label for="disciplinas">Selecione a Disciplina:</label>
+        <select id="disciplinas"></select>
+
+        <table id="notas-table">
+            <thead>
+                <tr>
+                    <th rowspan="2">ALUNOS</th>
+                    <th colspan="4">1ª UNIDADE</th>
+                    <th colspan="4">2ª UNIDADE</th>
+                    <th colspan="4">3ª UNIDADE</th>
+                    <th rowspan="2">MF</th>
+                    <th rowspan="2">MF/NOA</th>
+                    <th rowspan="2">Resultado</th>
+                </tr>
+                <tr>
+                    <th>AV1</th>
+                    <th>AV2</th>
+                    <th>MU</th>
+                    <th>NOA</th>
+                    <th>AV1</th>
+                    <th>AV2</th>
+                    <th>MU</th>
+                    <th>NOA</th>
+                    <th>AV1</th>
+                    <th>AV2</th>
+                    <th>MU</th>
+                    <th>NOA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- As linhas dos alunos serão carregadas aqui -->
+            </tbody>
+        </table>
+        <button id="calcular-notas">Calcular Notas</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
