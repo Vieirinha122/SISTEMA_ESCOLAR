@@ -195,3 +195,92 @@ body {
 .menu-button.show, .custom-button.show {
     animation: fadeIn 0.5s forwards; 
 }
+
+
+/* Responsividade */
+/* Para telas pequenas (smartphones) */
+@media only screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    .header {
+        font-size: 1.2em;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .menu-button {
+        padding: 12px;
+        font-size: 0.9em;
+    }
+
+    .custom-button {
+        height: 40px;
+        font-size: 0.9em;
+    }
+
+    .senac-logo {
+        width: 100%;
+    }
+
+    
+}
+
+/* Para tablets (telas médias) */
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+
+    .header {
+        font-size: 1.4em;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .menu-button {
+        padding: 14px;
+        font-size: 0.95em;
+    }
+
+    .custom-button {
+        height: 45px;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .senac-logo {
+        max-width: 60%;
+    }
+}
+
+/* Para desktops grandes */
+@media only screen and (min-width: 1024px) {
+    .sidebar {
+        width: 350px;
+    }
+
+    .main-content {
+        padding: 40px;
+    }
+
+    .senac-logo {
+        max-width: 100%;
+    }
+}

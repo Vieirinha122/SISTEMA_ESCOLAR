@@ -11,7 +11,7 @@ body {
 .login-container {
     background-color: white;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 21px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 350px;
     text-align: center;
@@ -146,4 +146,20 @@ button:hover {
 #matriculaContainer, #emailContainer {
     width: 100%;
     text-align: left;
+}
+
+/* RESPONSIVIDADE */
+
+/* Smartphones */
+@media only screen and (max-width: 480px) {
+    .login-container {
+        margin: 15px;
+    }
+}
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+    .login-container {
+        margin: 15px;
+    }
 }
