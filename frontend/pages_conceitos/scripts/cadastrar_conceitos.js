@@ -27,15 +27,64 @@ async function carregarDados() {
     }
 }
 
+// Função para calcular a média e o resultado automaticamente
+function calcularMedia() {
+    const AV1 = parseFloat(document.getElementById('AV1').value);
+    const AV2 = parseFloat(document.getElementById('AV2').value);
+    const MU = parseFloat(document.getElementById('MU').value);
+    const NOA = parseFloat(document.getElementById('NOA').value);
+
+    // Verifica se as notas estão todas preenchidas
+    if (isNaN(AV1) || isNaN(AV2) || isNaN(MU) || isNaN(NOA)) {
+        document.getElementById('MF').value = '';
+        document.getElementById('resultado').value = '';
+        return;
+    }
+
+    // Calcula a Média Final (MF)
+    const mediaFinal = (AV1 + AV2 + MU + NOA) / 4;
+    document.getElementById('MF').value = mediaFinal.toFixed(2); // Exibe a média final
+
+    // Determina o resultado (Aprovado/Reprovado)
+    const resultado = mediaFinal >= 6 ? 'Aprovado' : 'Reprovado';
+    document.getElementById('resultado').value = resultado;
+
+    // Exibe a cor de acordo com o resultado
+    const resultadoInput = document.getElementById('resultado');
+    if (resultado === 'Aprovado') {
+        resultadoInput.style.backgroundColor = 'lightgreen';
+    } else {
+        resultadoInput.style.backgroundColor = 'lightcoral';
+    }
+}
+
 // Função para enviar os dados do conceito
 async function cadastrarConceito(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
-    const conceito = document.getElementById('conceito').value;
+
+    const AV1 = parseFloat(document.getElementById('AV1').value);
+    const AV2 = parseFloat(document.getElementById('AV2').value);
+    const MU = parseFloat(document.getElementById('MU').value);
+    const NOA = parseFloat(document.getElementById('NOA').value);
     const alunoId = document.getElementById('aluno').value;
     const disciplinaId = document.getElementById('disciplina').value;
 
+    // Calcula a Média Final e o Resultado
+    const resultadoCalculo = calcularMedia();
+    if (!resultadoCalculo) {
+        alert("Preencha todas as notas corretamente.");
+        return;
+    }
+
+    const { mediaFinal, resultado } = resultadoCalculo;
+
     const dados = {
-        conceito: conceito,
+        AV1: AV1,
+        AV2: AV2,
+        MU: MU,
+        NOA: NOA,
+        MF: mediaFinal,
+        resultado: resultado,
         aluno: alunoId,
         disciplina: disciplinaId
     };
@@ -49,9 +98,9 @@ async function cadastrarConceito(event) {
             body: JSON.stringify(dados)
         });
 
-        const resultado = await resposta.json();
-        const messageDiv = document.getElementById('mensagem-sucesso'); // Atualizado para o ID correto
-        const errorDiv = document.getElementById('mensagem-error'); // Mensagem de erro
+        const resultadoResposta = await resposta.json();
+        const messageDiv = document.getElementById('mensagem-sucesso');
+        const errorDiv = document.getElementById('mensagem-error');
 
         // Limpa mensagens anteriores
         messageDiv.style.display = 'none';
@@ -59,24 +108,30 @@ async function cadastrarConceito(event) {
 
         if (resposta.ok) {
             messageDiv.textContent = 'Conceito cadastrado com sucesso!';
-            messageDiv.className = 'mensagem-sucesso'; // Aplica estilo de sucesso
-            messageDiv.style.display = 'block'; // Exibe a mensagem
+            messageDiv.className = 'mensagem-sucesso';
+            messageDiv.style.display = 'block';
         } else {
-            errorDiv.textContent = `Erro: ${resultado.error}`;
-            errorDiv.className = 'mensagem-error'; // Aplica estilo de erro
-            errorDiv.style.display = 'block'; // Exibe a mensagem
+            errorDiv.textContent = `Erro: ${resultadoResposta.error}`;
+            errorDiv.className = 'mensagem-error';
+            errorDiv.style.display = 'block';
         }
     } catch (error) {
         console.error('Erro ao cadastrar conceito:', error);
         const errorDiv = document.getElementById('mensagem-error');
         errorDiv.textContent = 'Erro ao cadastrar conceito';
-        errorDiv.className = 'mensagem-error'; // Aplica estilo de erro
-        errorDiv.style.display = 'block'; // Exibe a mensagem
+        errorDiv.className = 'mensagem-error';
+        errorDiv.style.display = 'block';
     }
 }
 
 // Adicionar evento ao formulário
 document.getElementById('cadastro-conceito').addEventListener('submit', cadastrarConceito);
+
+// Adicionar evento para calcular a média automaticamente
+document.getElementById('AV1').addEventListener('input', calcularMedia);
+document.getElementById('AV2').addEventListener('input', calcularMedia);
+document.getElementById('MU').addEventListener('input', calcularMedia);
+document.getElementById('NOA').addEventListener('input', calcularMedia);
 
 // Carregar os dados dos alunos e disciplinas ao carregar a página
 window.onload = carregarDados;

@@ -48,9 +48,24 @@
         <div class="main-content">
             <h1>Cadastro de Conceito</h1>
             <div id="form-container">
-                <form id="cadastro-conceito"> <!-- Alterado para o ID correto -->
-                    <label for="conceito">Conceito:</label>
-                    <input type="number" id="conceito" name="conceito" required>
+                <form id="cadastro-conceito">
+                    <label for="AV1">AV1:</label>
+                    <input type="number" id="AV1" name="AV1" step="0.1" min="0" max="10" required>
+
+                    <label for="AV2">AV2:</label>
+                    <input type="number" id="AV2" name="AV2" step="0.1" min="0" max="10" required>
+
+                    <label for="MU">MU:</label>
+                    <input type="number" id="MU" name="MU" step="0.1" min="0" max="10" required>
+
+                    <label for="NOA">NOA:</label>
+                    <input type="number" id="NOA" name="NOA" step="0.1" min="0" max="10" required>
+
+                    <label for="MF">Média Final (MF):</label>
+                    <input type="text" id="MF" name="MF" disabled>
+
+                    <label for="resultado">Resultado:</label>
+                    <input type="text" id="resultado" name="resultado" disabled>
 
                     <label for="aluno">Aluno:</label>
                     <select id="aluno" name="aluno" required></select>
@@ -63,7 +78,7 @@
                         Conceito cadastrado com sucesso!
                     </div>
                 </form>
-                <div id="mensagem-error" style="display: none;" class="mensagem-error"></div> <!-- Mensagem de erro -->
+                <div id="mensagem-error" style="display: none;" class="mensagem-error"></div>
             </div>
             <div>
                 <img src="../imagens/Senac_logo.png" alt="Senac Logo" class="senac-logo">
